@@ -1063,7 +1063,7 @@ class PVector:
     def __deepcopy__(self, memo):
         return PVector(self.x, self.y, self.z)
 
-    def __repr__(self):  # PROVISÓRIO
+    def __repr__(self):  # PROVISÃ“RIO
         return f'PVector({self.x}, {self.y}, {self.z})'
 
     def set(self, *args):
@@ -1251,7 +1251,7 @@ class PVector:
     def toString(self):
         # Returns a string representation of a vector v by calling String(v) or v.toString().
         # return self.__vector.toString() would be something like "p5.vector
-        # Object […, …, …]"
+        # Object [Â…, Â…, Â…]"
         return str(self)
 
     def rem(self, *args):
@@ -1505,50 +1505,14 @@ def draw():
 
 let userCode = `
 def setup():
-
-
-
     createCanvas(400, 400)
-
-
-
     background(160)
 
-
-
-
-
-
-
-
-
-
-
 def draw():
-
-
-
     fill("blue")
-
-
-
     background(200)
-
-
-
     radius = sin(frameCount / 60) * 50 + 50
-
-
-
     ellipse(100, 100, radius, radius)
-
-
-
-
-
-
-
-
 `;
 
 function runCode() {
