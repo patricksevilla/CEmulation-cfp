@@ -92,3 +92,71 @@ if ((int(user_input)) % 2) == 0:
     print (dist)
     
 #ndi pa i2 tapos
+#---------------------------------Relative motion start
+import math
+
+class Relative_Motion:
+    def one_d_VofX(self,VofXRtoY,VofX):
+        answer_y = VofXRtoY + VofX
+        return answer_y
+
+    def one_d_VofX_Y(self,VofX,VofY):
+        answer_x_y = VofX - VofY
+        return answer_x_y
+
+    def resultant(self,xy,yw):
+        Result = ((xy**2) + (yw**2))**0.5
+        return Result
+
+    def resultantangle(self,yw,xy):
+        yyy = math.radians(yw)
+        xxx = math.radians(xy)
+        theta = 90 - float(math.atan(xxx/yyy)/(math.pi/180))
+        return theta
+
+    def summ_on_X(self,vofx_y,txy,vofy_w,tyw):
+        summ_x = float((vofx_y*math.cos(math.radians(txy))) + (vofy_w*math.cos(math.radians(tyw))))
+        return summ_x
+
+    def summ_on_y(self,vofx_y,txy,vofy_w,tyw):
+        summ_y = float((vofx_y*math.sin(math.radians(txy))) + (vofy_w*math.sin(math.radians(tyw))))
+        return summ_y
+
+print("Choose from One-Dimensional or Two-Dimensional Relative Motion")
+choice = input("Type 'YES' if One-Dimensional or 'TRUE' for Two-Dimensional: ")
+z = Relative_Motion()
+
+while True:
+    if choice.upper() == 'YES':
+        print("\nWhat is the unknown? (a/b)")
+        spec = input("\ta = Velocity of X | b = Velocity of X Relative to Y: ")
+        if spec.lower() == 'a':
+           x_y = int(input("Input Velocity of X Relative to Y: "))
+           y = int(input("Input Velocity of Y: "))
+           ans_1 = z.one_d_VofX(x_y,y)
+           print(f"Velocity of X is: {ans_1}")
+        elif spec.lower() == 'b':
+            v_x = int(input("Input Velocity of X: "))
+            v_y = int(input("Input Velocity of Y: "))
+            ans_2 = z.one_d_VofX_Y(v_x,v_y)
+            print(f"Velocity of X Relative to Y is: {ans_2}")
+        else:
+            continue
+        break
+
+    elif choice.upper() == 'TRUE':
+        vx_y = int(input("Input Velocity of X Relative to Y: "))
+        thetaxy = int(input("Theta along Positive X-Axis: "))
+        vy_w = int(input("Input Velocity of Y Relative to W: "))
+        thetayw = int(input("Theta along Positive X-Axis: "))
+        xsumm = z.summ_on_X(vx_y,thetaxy,vy_w,thetayw)
+        ysumm = z.summ_on_y(vx_y,thetaxy,vy_w,thetayw)
+        r_force = z.resultant(xsumm,ysumm)
+        r_theta = z.resultantangle(ysumm,xsumm)
+        print(f"The Velocity of X Relative to W is: {r_force} unit/time")
+        print(f"Direction of Velocity is: {r_theta}° along positive x-axis.")
+        break
+    else:
+        break
+print("\nThank You for using the Program!")
+#-----------------------------------------relative motion end
