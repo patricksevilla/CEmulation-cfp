@@ -18,3 +18,5 @@ blah blah
 
 
 dito kayo magiisue https://github.com/patricksevilla/CFP-Project/issues saka magtitigin ng issue
+
+![image](https://user-images.githubusercontent.com/57100910/121816779-1e530600-ccb0-11eb-84a2-a517491d17fa.png)
