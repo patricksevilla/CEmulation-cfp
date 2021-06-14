@@ -470,3 +470,126 @@ print('tangental force :',u.tan_force,'N')
 print('net force second formula :',u.getNetf(u.tan_force,u.cen_force),'N')# second formula for net force given 2 parameters
 print('angle :',u.angle,'degrees') # angle calculation
 #------------------------------------------------------Non Uniform Circular Motion 1D end
+
+# -----------------------------------------------------ave speed, ave velocity, ave acceleration
+# Average Speed, Average Velocity, Average Acceleration
+
+# Average Speed
+# Given: distance, and time
+def average_speed(d, t):
+    a_s = d / t
+    return a_s
+
+
+# Given: average speed, and time
+def distance(a_s, t):
+    d = a_s * t
+    return d
+
+
+# Given: average speed, and distance
+def time(a_s, d):
+    t = d / a_s
+    return t
+
+
+# Average Speed (Other Formulas)
+# Case 1: Different Distance at the Same Time
+# Given: initial speed, and final speed
+def average_speed1(si, sf):
+    a_s = (si + sf) / 2
+    return a_s
+
+
+# Given: average speed, and final speed
+def initial_speed(a_s, sf):
+    si = (2 * a_s) - sf
+    return si
+
+
+# Given: average speed, and initial speed
+def final_speed(a_s, si):
+    sf = (2 * a_s) - si
+    return sf
+
+
+# Case 2: Same Distance at the Different Time
+# Given: initial speed, and final speed
+def average_speed2(si, sf):
+    a_s = (2 * si * sf) / (si + sf)
+    return a_s
+
+
+# Given: average speed, and final speed
+def initial_speed1(a_s, sf):
+    si = (a_s * sf) / ((2 * sf) - a_s)
+    return si
+
+
+# Given: average speed, and initial speed
+def final_speed1(a_s, si):
+    sf = (a_s * si) / ((2 * si) - a_s)
+    return sf
+
+
+# Average Velocity
+# Given: initial position, final position, initial time, and final time
+def average_velocity(xi, xf, ti, tf):
+    a_v = (xf - xi) / (tf - ti)
+    return a_v
+
+
+# Given: average_velocity, final position, initial time, and final time
+def initial_position(a_v, xf, ti, tf):
+    xi = xf - a_v * (tf - ti)
+    return xi
+
+
+# Given: average_velocity, initial position, initial time, and final time
+def final_position(a_v, xi, ti, tf):
+    xf = xi + a_v * (tf - ti)
+    return xf
+
+
+# Given: average_velocity, initial position, final position, and final time
+def initial_time(a_v, xi, xf, tf):
+    ti = (a_v * tf - (xf - xi)) / a_v
+    return ti
+
+
+# Given: average_velocity, initial position, final position, and initial time
+def final_time(a_v, xi, xf, ti):
+    tf = ((xf - xi) + a_v * ti) / a_v
+    return tf
+
+
+# Average Acceleration
+# Given: final velocity, initial velocity, initial time, and final time
+def average_acceleration(vf, vi, ti, tf):
+    a = (vf - vi) / (tf - ti)
+    return a
+
+
+# Given: average acceleration, final velocity, initial time, and final time
+def initial_velocity(a, vf, ti, tf):
+    vi = vf - a * (tf - ti)
+    return vi
+
+
+# Given: average acceleration, initial velocity, initial time, and final time
+def final_velocity(a, vi, ti, tf):
+    vf = vi + a * (tf - ti)
+    return vf
+
+
+# Given: average acceleration, initial velocity, final velocity, and final time
+def initial_time1(a, vi, vf, tf):
+    ti = (a * tf - (vf - vi)) / a
+    return ti
+
+
+# Given: average acceleration, initial velocity, final velocity, and initial time
+def final_time1(a, vi, vf, ti):
+    tf = ((vf - vi) + a * ti) / a
+    return tf
+# -----------------------------------------------------ave speed, ave velocity, ave acceleration end
