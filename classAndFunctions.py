@@ -336,3 +336,96 @@ def Initial_Pos2(Vf, Vo, Y):  # Condition: Final Velocity, Initial Velocity, Fin
     Yo = Y - (((((-1)*Vf) ** 2) + (Vo ** 2)) / (2*g))
     return Yo
 #------------------------------------------------------free fall end
+
+#------------------------------------------------------motion 1D
+# Motion in One Dimension
+
+# Given initial velocity, acceleration, and time
+def final_velocity1(vo, a, t):
+    vf = vo + (a * t)
+    return vf
+
+
+# Given final velocity, acceleration, and time
+def initial_velocity1(vf, a, t):
+    vo = vf - (a * t)
+    return vo
+
+
+# Given final velocity, initial velocity, and time
+def acceleration(vf, vo, t):
+    a = (vf - vo) / t
+    return a
+
+
+# Given final velocity, initial velocity, and acceleration
+def time1(vf, vo, a):
+    t = (vf - vo) / a
+    return t
+
+
+# Given initial position, initial velocity, acceleration, and time
+def final_position1(xo, vo, t, a):
+    xf = xo + (vo * t) + (0.5 * a * (t ** 2))
+    return xf
+
+
+# Given final position, initial velocity, acceleration, and time
+def initial_position1(xf, vo, t, a):
+    xo = xf - (vo * t) - (0.5 * a * (t ** 2))
+    return xo
+
+
+# Given final position, initial position, initial velocity, and time
+def acceleration2(xf, xo, vo, t):
+    a = (2 * (xf - xo - (vo * t))) / (t ** 2)
+    return a
+
+
+# Given final position, initial position, acceleration, and time
+def initial_velocity2(xf, xo, a, t):
+    vo = (xf - xo - (0.5 * a * (t ** 2))) / t
+    return vo
+
+
+# Given final position, initial position, initial velocity, and acceleration
+def time2(xf, xo, vo, a):
+    t = ((-1 * vo) + ((vo ** 2) - (4 * 0.5 * a * (xo - xf)))) / a
+    return t
+
+
+# Given final position, initial position, initial velocity, and acceleration
+def time3(xf, xo, vo, a):
+    t = ((-1 * vo) - ((vo ** 2) - (4 * 0.5 * a * (xo - xf)))) / a
+    return t
+
+
+# Given initial velocity, final position, initial position, and acceleration
+def final_velocity2(vo, a, xf, xo):
+    vf = ((vo ** 2) + ((2 * a) * (xf - xo))) ** 0.5
+    return vf
+
+
+# Given final velocity, final position, initial position, and acceleration
+def initial_velocity3(vf, a, xf, xo):
+    vo = ((vf ** 2) - ((2 * a) * (xf - xo))) ** 0.5
+    return vo
+
+
+# Given final velocity, initial velocity, final position, and initial position
+def acceleration3(vf, vo, xf, xo):
+    a = ((vf ** 2) - (vo ** 2)) / (2 * (xf - xo))
+    return a
+
+
+# Given final velocity, initial velocity, final position, and acceleration
+def initial_position2(vf, vo, a, xf):
+    xo = xf - (((vf ** 2) - (vo ** 2)) / (2 * a))
+    return xo
+
+
+# Given final velocity, initial velocity, initial position, and acceleration
+def final_position2(vf, vo, a, xo):
+    xf = xo + (((vf ** 2) - (vo ** 2)) / (2 * a))
+    return xf
+#------------------------------------------------------motion 1D end
