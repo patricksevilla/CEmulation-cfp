@@ -394,3 +394,76 @@ def final_position2(vf, vo, a, xo):
     xf = xo + (((vf ** 2) - (vo ** 2)) / (2 * a))
     return xf
 #------------------------------------------------------motion 1D end
+    from math import sqrt,atan,degrees
+class NonUniformMotion:
+    
+    def __init__(self,m=0,vi=0,vf=0,r=0,v = 0,t = 0):
+        self.radius = r
+        self.mass = m
+        self.initial_velocity = vi
+        self.final_velocity = vf
+        self.velocity = v
+        self.time = t
+    
+    def getYAcc(self):
+        v = self.velocity or self.final_velocity
+        y = (v**2)/self.radius
+        return y
+    def getResAcc(self):
+        r =  sqrt((self.tan_acc)**2 + (self.cen_acc)**2)
+        return float('%.2f'%r)
+    def getXAcc(self):
+        x = (self.final_velocity - self.initial_velocity)/self.time
+        return x
+    def getNetf(self,tanf=0,cenf=0):
+        if tanf and cenf:
+            return float('%.2f'%sqrt((tanf)**2 + (cenf)**2))
+        return self.mass*self.net_acc
+    
+    def getCforce(self):
+        return self.mass*self.cen_acc
+    def getTForce(self):
+        return self.mass*self.tan_acc
+    
+    
+    @property
+    def net_acc(self):
+        return self.getResAcc()
+    @property
+    def tan_acc(self):
+        return self.getXAcc()
+    @property
+    def cen_acc(self):
+        return self.getYAcc()
+ 
+    # forces
+    @property
+    def cen_force(self):
+        return self.getCforce()
+    @property
+    def net_force(self,t = 0,c=0):
+        if t and c:
+            return self.getNetf(t,c)
+        return self.getNetf()
+    @property
+    def tan_force(self):
+        return self.getTForce()
+    @property
+    def angle(self):
+        ang = atan(self.cen_acc/self.tan_acc)
+        return float('%.2f'%degrees(ang))
+    
+    
+# solutions where based on youtube discussion
+# http://youtu.be/XlvD5_0FVSc
+# problem was given in youtube link . . . 
+u = NonUniformMotion(t = 5,vf= 40,m=1200,r=800)
+print('centripetal acceleration :',u.cen_acc,'m/s2') # centripetal acc
+print('tangental acceleration :',u.tan_acc,'m/s2') # tangental acceleration x
+print('net acceleration :',u.net_acc,'m/s2') # net acceleration
+print('net force :',u.net_force,'N') # net force Newton
+ 
+print('centripetal force :',u.cen_force,'N') # centripetal force Newton
+print('tangental force :',u.tan_force,'N')
+print('net force second formula :',u.getNetf(u.tan_force,u.cen_force),'N')# second formula for net force given 2 parameters
+print('angle :',u.angle,'degrees') # angle calculation
