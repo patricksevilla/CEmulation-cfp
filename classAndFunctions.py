@@ -467,3 +467,4 @@ print('centripetal force :',u.cen_force,'N') # centripetal force Newton
 print('tangental force :',u.tan_force,'N')
 print('net force second formula :',u.getNetf(u.tan_force,u.cen_force),'N')# second formula for net force given 2 parameters
 print('angle :',u.angle,'degrees') # angle calculation
+#------------------------------------------------------motion 1D end
