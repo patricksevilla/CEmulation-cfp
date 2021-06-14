@@ -394,6 +394,8 @@ def final_position2(vf, vo, a, xo):
     xf = xo + (((vf ** 2) - (vo ** 2)) / (2 * a))
     return xf
 #------------------------------------------------------motion 1D end
+
+#------------------------------------------------------Non Uniform Circular Motion 1D 
     from math import sqrt,atan,degrees
 class NonUniformMotion:
     
@@ -467,4 +469,4 @@ print('centripetal force :',u.cen_force,'N') # centripetal force Newton
 print('tangental force :',u.tan_force,'N')
 print('net force second formula :',u.getNetf(u.tan_force,u.cen_force),'N')# second formula for net force given 2 parameters
 print('angle :',u.angle,'degrees') # angle calculation
-#------------------------------------------------------motion 1D end
+#------------------------------------------------------Non Uniform Circular Motion 1D end
