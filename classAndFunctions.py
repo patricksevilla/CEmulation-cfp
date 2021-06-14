@@ -161,115 +161,80 @@ while True:
 print("\nThank You for using the Program!")
 #-----------------------------------------relative motion end
 
-#-----------------------------------------vextors start
-class Trigonometry:
-    def __init__(self):
+#-----------------------------------------vectors start
+import math
 
-        self.factor = 0
-        self.angle = 0
-        self.pi = 3.1415926535
+
+class Vector:
+    def __init__(self):
         self.x = 0
-        self.sin, self.cos, self.tan, self.sec, self.csc, self.cot = 0, 0, 0, 0, 0, 0
-        self.exclusion_1, self.exclusion_2 = (90, 270, 450, 630, 810), (0, 180, 360, 540, 720)
-        self.first_quad, self.fourth_quad, self.rev_1, self.rev_2 = list(range(0, 90 + 1)), list(
-            range(270, 360 + 1)), list(range(540, 630 + 1)), list(range(720, 810 + 1))
-        self.positive_angle_cos = self.first_quad + self.fourth_quad + self.rev_1 + self.rev_2
-        self.force = 0
-        self.x_component = 0
-        self.y_component = 0
-        self.resultant = 0
+        self.y = 0
         self.x_components = []
         self.y_components = []
-        self.component_x = 0
-        self.component_y = 0
+        self.force = 0
+        self.angle = 0
         self.direction = 0
-        self.ar_tan = 0
-        self.direction_2 = 0
-        
-    def factorial(self, x):
-
-        self.factor = 1
-        self.x = x
-        for i in range(x):
-            self.factor *= i + 1
-        return self.factor
-
-    def Trigonometric_Functions(self, angle):
-
-        theta = angle % 360
-        self.angle = theta * self.pi / 180
-
-        # SINE
         self.sin = 0
-        for i in range(10):
-            y = (2 * i + 1)
-            self.sin += (-1) ** i * self.angle ** y / self.factorial(y)
-        # COSINE
         self.cos = 0
-        if angle in self.positive_angle_cos:
-            self.cos = (1 - (self.sin ** 2)) ** 0.5
-        else:
-            self.cos = -(1 - (self.sin ** 2)) ** 0.5
+        self.arc_tan = 0
+        self.resultant = 0
 
-        # TANGENT
-        self.tan = 0
-        if angle not in self.exclusion_1:
-            self.tan = self.sin / self.cos
-        else:
-            self.tan = 'Undefined'
-        return self.sin, self.cos, self.tan
+    def angles(self, angle):
+        self.sin = 0
+        self.sin = math.sin(math.radians(angle))
+
+        self.cos = 0
+        self.cos = math.cos(math.radians(angle))
+
+        return self.sin, self.cos
 
     def components(self, force):
-        
         # X-Component
-        self.x_component = 0
+        self.x = 0
         self.force = force
-        self.x_component = (self.force * self.cos)
-        
+        self.x = self.force * self.cos
+
         # Y-Component
-        self.y_component = 0
-        self.y_component = (self.force * self.sin)
-        self.x_components.append(self.x_component)
-        self.y_components.append(self.y_component)
+        self.y = 0
+        self.y = (self.force * self.sin)
+        self.x_components.append(self.x)
+        self.y_components.append(self.y)
+
         return self.x_components, self.y_components
 
-    def resultants(self):
-        
-        # Resultant
-        self.component_x = sum(self.x_components)
-        self.component_y = sum(self.y_components)
-        self.resultant = (self.component_x ** 2 + self.component_y ** 2) ** 0.5
+    def resultant_angle(self):
+        self.arc_tan = 0
+        self.y_components = sum(self.y_components)
+        self.x_components = sum(self.x_components)
+        self.resultant = (self.x_components ** 2 + self.y_components ** 2) ** 0.5
 
-        # Angle
-        self.direction = self.component_y / self.component_x
-        for w in range(10):
-            y = (2 * w + 1)
-            self.ar_tan += (-1) ** w * self.direction ** y / y
-        self.angle += abs((self.ar_tan * 180) / self.pi)
-
-        return f'\nCOMPONENTS OF FORCE:\n\nX-Component of Force: {self.component_x}\nY-Component of Force: {self.component_y}\n\nRESULTANT FORCE:\n\nNet Force Magnitude: {self.resultant}\nForce Angle: {self.angle}'
+        angle_1 = self.y_components / self.x_components
+        self.arc_tan = abs(math.atan(angle_1))
+        self.arc_tan = math.degrees(self.arc_tan)
+        return f'\n\nCOMPONENTS OF THE FORCE:\n\nX-COMPONENT: {self.x_components} \nY-COMPONENT: {self.y_components}\n\nRESULTANT OF THE FORCE: \n\nNet Force Magnitude: {self.resultant}\nForce Angle: {self.arc_tan} '
 
     def directions(self):
 
-        if self.component_x > 0 and self.component_y > 0:
+        if self.x_components > 0 and self.y_components > 0:
             self.direction_2 = 'North of East'
-        elif self.component_x < 0 and self.component_y > 0:
+        elif self.x_components < 0 and self.y_components> 0:
             self.direction_2 = 'North of West'
-        elif self.component_x > 0 and self.component_y < 0:
+        elif self.x_components > 0 and self.y_components < 0:
             self.direction_2 = 'South of East'
         else:
             self.direction_2 = 'South of West'
-        return f'Direction of Force: {self.direction_2}'
-    
-conversion = Trigonometry()
+        return f'Direction of the Force: {self.direction_2}'
+
+x = Vector()
 
 no_forces = int(input('Number of Forces: '))
 for i in range(no_forces):
     print(f'\nBearing {i + 1}')
-    (conversion.Trigonometric_Functions(float(input('Angle: '))))
-    (conversion.components(float(input('Force: '))))
-print(conversion.resultants())
-print(conversion.directions())
+    (x.angles(float(input('Angle: '))))
+    (x.components(float(input('Force: '))))
+print(x.resultant_angle())
+print(x.directions())
+
 #------------------------------------------------------vectors end
 
 #------------------------------------------------------free fall
