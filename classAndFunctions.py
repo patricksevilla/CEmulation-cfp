@@ -271,3 +271,68 @@ for i in range(no_forces):
 print(conversion.resultants())
 print(conversion.directions())
 #------------------------------------------------------vectors end
+
+#------------------------------------------------------free fall
+# Convention: Upward - Positive
+def init_velocity1(Y, Yo, t): # Condition: time, Initial Y-Position, Final Y-Position
+    g = 9.81
+    Vo = (Y+(0.5*g*(t**2))-Yo)/ t
+    return Vo
+
+def init_velocity2(Vf, t):  # Condition: Final Velocity, Time
+    g = 9.81
+    Vo = Vf + (g*t)
+    return Vo
+
+def init_velocity3(Vf, Yo, Y):  # Condition: Final Velocity=0, Initial Y-Position, Final Y-Position
+    g = 9.81
+    Vo = ((Vf**2) + (2*g*(Y-Yo))) **0.5
+    return Vo
+
+def final_velocity1(Vo, t):  # Condition: Initial Velocity, time
+    g = 9.81
+    Vf = Vo - (g*t)
+    return Vf
+
+def final_velocity2(Vo, Yo, Y):  # Condition: Initial Velocity, Initial Y-Position, Final Y-Position
+    g = 9.81
+    Vf = ((Vo**2) - (2*g*(Y-Yo))) **0.5
+    return Vf
+
+def time_1(Vo, Vf):  # Condition: Final Velocity, Initial Velocity
+    g = 9.81
+    t = (Vo-Vf)/g
+    return t
+
+def time_2(Vo, Yo, Y): # Condition: Initial Velocity, Initial Y-Position, Final Y-Position
+    g = 9.81
+    a = 0.5 * g
+    b = (-1) * Vo
+    c = Y - Yo
+    t1 = (((-1)*b) - (((b**2)-(4*a*c))**0.5)) / (2*a)
+    t2 = (((-1)*b) + (((b**2)-(4*a*c))**0.5)) / (2*a)
+    if t1 > 0:
+        return t1
+    else:
+        return t2
+
+def Final_Pos1(Yo, Vo, t):  # Condition: Initial Y-Position, Initial Velocity, Time
+    g = 9.81
+    Y = Yo + (Vo * t) - (0.5 * g * (t**2))
+    return Y
+
+def Final_Pos2(Vf, Vo, Yo):  # Condition: Final Velocity, Initial Velocity, Inital Y-Position
+    g = 9.81
+    Y = Yo + (((((-1)*Vf) ** 2) + (Vo ** 2)) / (2*g))
+    return Y
+
+def Initial_Pos1(Y, Vo, t):  # Condition: Final Y-Position, Initial Velocity, Time
+    g = 9.81
+    Yo =  Y - (Vo*t) + (0.5 * g * (t**2))
+    return Yo
+
+def Initial_Pos2(Vf, Vo, Y):  # Condition: Final Velocity, Initial Velocity, Final Y-Position
+    g = 9.81
+    Yo = Y - (((((-1)*Vf) ** 2) + (Vo ** 2)) / (2*g))
+    return Yo
+#------------------------------------------------------free fall end
