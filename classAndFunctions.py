@@ -593,3 +593,79 @@ def final_time1(a, vi, vf, ti):
     tf = ((vf - vi) + a * ti) / a
     return tf
 # -----------------------------------------------------ave speed, ave velocity, ave acceleration end
+
+# -----------------------------------------------------Projectile Motion
+
+g = 9.81
+
+# Given x initial, initial velocity, angle along x-axis, and time
+def x_final(xo, vo, cos0, t):
+    xf = xo + (vo * cos0 * t)
+    return xf
+
+
+# Given y initial, initial velocity, angle along x-axis, time
+def y_final(yo, vo, sin0, t):
+    yf = yo + (vo * sin0 * t) - (1/2 * g * t**2)
+    return yf
+
+
+# Given initial velocity, and angle along x-axis
+def velocity_along_x(vo, cos0):
+    vx = vo * cos0
+    return vx
+
+
+# Given initial velocity, angle along x-axis, and time
+def velocity_along_y(vo, sin0, t):
+    vy = vo * sin0 - (g * t)
+    return vy
+
+
+# Given initial velocity, angle along x-axis, y final, and y initial
+def velocity_along_y(vo, sin0, yf, yo):
+    vy = ((vo * sin0) ** 2 - (2 * g) * (yf - yo))**1/2
+    return vy
+
+
+# Given x velocity and y velocity
+def initial_velocity(vx, vy):
+    vo = (vx ** 2 + vy ** 2) ** 1/2
+
+
+# Given x velocity and angle along x
+def initial_velocity(vx, cos0):
+    vo = vx / cos0
+    return vo
+
+
+# Given x final, x initial, angle along x, and time
+def initial_velocity(xf, xo, cos0, t):
+    vo = (xf - xo) / (cos0 * t)
+    return vo
+
+
+# Given y velocity, time, and angle along x
+def initial_velocity(vy, t, sin0):
+    vo = (vy + (g * t)) / sin0
+    return vo
+
+
+# Given y final, y initial, time, and angle along x
+def initial_velocity(yf, yo, t, sin0):
+    vo = ((yf - yo) + (1/2 * g * (t ** 2))) / (sin0 * t)
+    return vo
+
+
+# Given x final, x initial, initial velocity, and angle along x
+def time(xf, xo, vo, cos0):
+    t = (xf - xo) / (vo * cos0)
+    return t
+
+
+# Given initial velovity, angle along x, and y velocity
+def time(vo, sin0, vy):
+    t = ((vo * sin0) - vy) / g
+    return t
+
+#--------------------------------------------------------- Projectile Motion
