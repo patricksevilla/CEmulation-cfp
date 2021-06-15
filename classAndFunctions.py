@@ -669,3 +669,74 @@ def time(vo, sin0, vy):
     return t
 
 #--------------------------------------------------------- Projectile Motion
+
+# ----------------------------------------------------- Uniform Circular Motion
+import math
+
+
+def CentripetalAcceleration(v, R):  # Given Velocity and RADIUS
+    Ac = v ** 2 / R
+    return Ac
+
+
+def Radius_Ac(Ac, v):  # Given CENTRIPETAL ACCELERATION and VELOCITY
+    R = v ** 2 / Ac
+    return R
+
+
+def Vel_ac(Ac, R):  # Given CENTRIPETAL ACCELERATION AND RADIUS
+    v = math.sqrt(R * Ac)
+    return v
+
+
+def Speed(d, T):  # Given DISTANCE and TIME
+    speed = d / T
+    return speed
+
+
+def Time(d, s):  # Given DISTANCE and SPEED
+    time = d / s
+    return time
+
+
+def Distancce(s, T):  # Given SPEED and TIME
+    d = s * T
+    return d
+
+
+def Period(R, v):  # Given RADIUS and VELOCITY
+    T = (2 * math.pi * R) / v
+    return T
+
+
+def Velocity(R, T):  # Given RADIUS and TIME
+    v = (2 * math.pi * R) / T
+    return v
+
+
+def Radius(T, v):  # Given TIME and Velocity
+    R = (T * v) / 2 * math.pi
+    return R
+
+
+# Ac = Arad
+def Arad(R, T):  # Given RADIUS and TIME
+    arad = (4 * math.pi * R) / T ** 2
+    return arad
+
+
+def R_rad(arad, T):  # Given ARAD and TIME
+    R = ((T ** 2) * arad) / (4 * math.pi)
+    return R
+
+
+def T_rad(arad, R):  # Given ARAD and RADIUS
+    T = math.sqrt((4 * math.pi * R) / arad)
+    return T
+
+
+def vel_grav(g, R):  # Velocity affected by gravity (Given GRAVITY AND RADIUS)
+    v = math.sqrt(g * R)
+    return v
+# ----------------------------------------------------- Uniform Circular Motion End
+
