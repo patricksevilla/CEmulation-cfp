@@ -1,19 +1,64 @@
 # code dito mga tol
 import random
+import pyodbc
+
+def get_dbconn(file, password=None):
+    pyodbc.pooling = False
+    driver = '{Microsoft Access Driver (*.mdb, *.accdb)}'
+    dbdsn = f'Driver={driver};Dbq={file};'
+    if password:
+        dbdsn += f'Pwd={password};'
+    return pyodbc.connect(dbdsn)
 
 def get_question():
+
+    conn_str = 'D:\ENGINEERING\st year 2nd sem\SUBMISSIONS\COMP FUND\PYTHON WORKS\sample.accdb'
+    conn = get_dbconn(conn_str)
+    crsr = conn.cursor()
+
+    # Get Table Names
+    table_name = []
+    for table_info in crsr.tables(tableType='TABLE'):
+        table_name.append(table_info.table_name)
+
+    # Read Data
+    sql = f'select * from {table_name[0]}'
+    crsr.execute(sql)
+    Items = crsr.fetchall()
+
+    question_all = []
     questions = []
-    questions.append(['Question A',['A', 'B', 'C', 'D'], 'A'])
-    questions.append(['Question B',['A', 'B', 'C', 'D'], 'A'])
-    questions.append(['Question C',['A', 'B', 'C', 'D'], 'A'])
-    return questions
+    choices = []
+    rightans = []
+    index = 0
+    questionno = 0
+
+    for qs in Items:
+        choicesq = []
+        questions.append(qs[1])
+        rightans.append(qs[6])
+        choices.append(list(qs[2:6]))
+        for i in choicesq:
+            choices.append(choicesq)
+
+
+    while questionno != len(questions):
+        questions_full = []
+        questions_full.append(questions[index])
+        questions_full.append(choices[index])
+        questions_full.append(rightans[index])
+        question_all.append(questions_full)
+        index = index + 1
+        questionno = questionno + 1
+
+    return question_all
 
 def new_game():
     question_list = get_question()
     random.shuffle(question_list)
     question_number = 0
     score = 0
-        for B in question_list:
+    for B in question_list:
         question_number = question_number + 1
         print(f'{question_number}. {B[0]}')
         for x in range(len(B[1])):
@@ -23,7 +68,7 @@ def new_game():
             score = score + 1
             print('Correct!')
         else:
-            print(f'Your answer is incorrect the answer is {B[1]}')
+            print(f'Your answer is incorrect the answer is {B[2]}')
     print(f'Your Score is {score}/{question_number}!')
 
 def play_again():
@@ -33,6 +78,7 @@ def play_again():
         return True
     else:
         return False
+
     
 #---------------------------------------------------------------------LOTPLAN
 import math
