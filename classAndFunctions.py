@@ -807,3 +807,58 @@ def vel_grav(g, R):  # Velocity affected by gravity (Given GRAVITY AND RADIUS)
     return v
 # ----------------------------------------------------- Uniform Circular Motion End
 
+# ----------------------------------------------------- Clark and Aljean's Code, di ko alam ano topicc nila
+import re
+time = int(input("Input Change in Time: "))
+def read(eq):
+    terms = eq.split('+')
+    equation = [re.split('x\^?', t) for t in terms]
+    eq_map = []
+    for e in equation:
+        try:
+            coeff = int(e[0])
+        except ValueError:
+            coeff = 1
+        try:
+            power = int(e[1])
+        except ValueError:
+            power = 1
+        except IndexError:
+            power = 0
+        eq_map.append((coeff, power))
+    return eq_map
+
+def write(eq_map):
+    def str_power(p):
+        if p == 0:
+            return ''
+        elif p == 1:
+            return 'x'
+        else:
+            return 'x^%d' % (p,)
+
+    def str_coeff(c):
+        return '' if c == 1 else str(c)
+    str_terms = [(str_coeff(c) + str_power(p)) for c, p in eq_map]
+    return "+".join(str_terms)
+
+def derivative(eq):
+    eq_map = read(eq)
+    der_map = [(p*c, p-1) for c, p in eq_map[:-1]]
+    return write(der_map)
+
+def run(eq):
+    print(eq, '->', derivative(eq))
+
+
+def read(eq):
+    terms = eq.split('+')
+    equation = [re.split('x\^?', t) for t in terms]
+    eq_map = []
+
+
+
+print("Enter Polynomial ")
+run(input(str("Enter Polynomial: ")))
+
+# ----------------------------------------------------- Clark and Aljean's Code, di ko alam ano topicc nila End
