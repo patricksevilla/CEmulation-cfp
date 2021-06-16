@@ -307,6 +307,27 @@ def Initial_Pos2(Vf, Vo, Y):  # Condition: Final Velocity, Initial Velocity, Fin
     g = 9.81
     Yo = Y - (((((-1)*Vf) ** 2) + (Vo ** 2)) / (2*g))
     return Yo
+
+# Two Unknown
+def Time_FinalPos(Vf, Vo, Yo):  # Condition: Final Velocity, Initial Velocity, Initial Position
+    g = 9.81
+    t = (Vo-Vf)/g
+    Y = Yo + (Vo * t) - (0.5 * g * (t ** 2))
+    return Y
+
+def Time_FinalVelocity(Vo, Y, Yo):  # Condition: Initial Velocity, Final Position, Initial Position
+    g = 9.81
+    a = 0.5 * g
+    b = (-1) * Vo
+    c = Y - Yo
+    t1 = (((-1) * b) - (((b ** 2) - (4 * a * c)) ** 0.5)) / (2 * a)
+    t2 = (((-1) * b) + (((b ** 2) - (4 * a * c)) ** 0.5)) / (2 * a)
+    if t1 > 0:
+        t = t1
+    else:
+        t = t2
+    Vf = Vo - (g * t)
+    return Vf
 #------------------------------------------------------free fall end
 
 #------------------------------------------------------motion 1D
