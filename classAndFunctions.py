@@ -60,17 +60,16 @@ def user(bearing):
             x = bearing [3]
             mag = float(bearing [4])
             theta = (float(theta)) + (int(z)/60)
-
         theta = math.radians(float(theta))
-        dep = (float(mag))* (math.cos(float(theta)))
-        lat = (float(mag)) * (math.sin(float(theta)))
+        lat = (float(mag))* (math.cos(float(theta)))
+        dep = (float(mag)) * (math.sin(float(theta)))
         if y.upper() == "S":
             lat *= -1
         if x.upper() == "W":
             dep *= -1
 
-        x_comp.append(dep)
-        y_comp.append(lat)
+        x_comp.append(lat)
+        y_comp.append(dep)
 
     except IndexError:
         print ("\nOoops! You entered the wrong format.")
@@ -82,21 +81,20 @@ for i in range(int(user_input)):
     bearing = bearing.split(" ")
     user(bearing)
 
-for a in range(len(x_comp)):
+for a in range(len(y_comp)):
     if a == 0:
-        q = (x_comp[0])
+        q = (y_comp[0])
     else:
-        q = (dmd_sum[a - 1]) + (x_comp[a - 1]) + (x_comp[a])
+        q = (dmd_sum[a - 1]) + (y_comp[a - 1]) + (y_comp[a])
     dmd_sum.append(q)
 
 
 for b in range(len(x_comp)):
-    da = y_comp[b] * (dmd_sum[b])
+    da = x_comp[b] * (dmd_sum[b])
     product.append(da)
-area = 2 * sum(product)
+area = sum(product) / 2
 
 print(abs(area))
-
     
 #ndi pa i2 tapos
 #---------------------------------Relative motion start
