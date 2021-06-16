@@ -39,18 +39,17 @@ def play_again():
     else:
         return False
     
-    #---------------------------------------------------------------------LOTPLAN
-    import math
+#---------------------------------------------------------------------LOTPLAN
+import math
 
 user_input = int(input("Input the number of bearings: "))
 x_comp = []
 y_comp = []
-
+dmd_sum = []
+product = []
 
 def user(bearing):
-
     try:
-
         y = bearing[0]
         z = bearing [2]
         theta = bearing[1]
@@ -63,8 +62,8 @@ def user(bearing):
             theta = (float(theta)) + (int(z)/60)
 
         theta = math.radians(float(theta))
-        lat = (float(mag))* (math.cos(float(theta)))
-        dep = (float(mag)) * (math.sin(float(theta)))
+        dep = (float(mag))* (math.cos(float(theta)))
+        lat = (float(mag)) * (math.sin(float(theta)))
         if y.upper() == "S":
             lat *= -1
         if x.upper() == "W":
@@ -83,13 +82,21 @@ for i in range(int(user_input)):
     bearing = bearing.split(" ")
     user(bearing)
 
-if ((int(user_input)) % 2) == 0:
-    dist = []
-    for i in range(len(x_comp)):
-        layo = math.sqrt(((((int(x_comp[i]))-(int(x_comp[i-1])))**2)) + (((int(y_comp[i]))-(int(y_comp[i-1])))**2))
-        dist.append(layo)
+for a in range(len(x_comp)):
+    if a == 0:
+        q = (x_comp[0])
+    else:
+        q = (dmd_sum[a - 1]) + (x_comp[a - 1]) + (x_comp[a])
+    dmd_sum.append(q)
 
-    print (dist)
+
+for b in range(len(x_comp)):
+    da = y_comp[b] * (dmd_sum[b])
+    product.append(da)
+area = 2 * sum(product)
+
+print(abs(area))
+
     
 #ndi pa i2 tapos
 #---------------------------------Relative motion start
