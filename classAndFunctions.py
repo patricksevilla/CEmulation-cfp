@@ -3,33 +3,28 @@ import random
 
 def get_question():
     questions = []
-    questions.append(['Question A', 'A'])#sample pa lang to di ko alam kung pano gagawin yung huhugot sa library ehh any suggestions?
-    questions.append(['Question B', 'A'])
-    questions.append(['Question C', 'A'])
-    questions.append(['Question D', 'A'])
-    questions.append(['Question E', 'A'])
-    questions.append(['Question F', 'A'])
-    questions.append(['Question G', 'A'])
-    questions.append(['Question H', 'A'])
-    questions.append(['Question I', 'A'])
-    questions.append(['Question J', 'A'])
+    questions.append(['Question A',['A', 'B', 'C', 'D'], 'A'])
+    questions.append(['Question B',['A', 'B', 'C', 'D'], 'A'])
+    questions.append(['Question C',['A', 'B', 'C', 'D'], 'A'])
     return questions
 
 def new_game():
     question_list = get_question()
     random.shuffle(question_list)
-    question_number = 1
+    question_number = 0
     score = 0
-    for B in question_list:
-        print(f'{B[0]} {question_number}')
+        for B in question_list:
+        question_number = question_number + 1
+        print(f'{question_number}. {B[0]}')
+        for x in range(len(B[1])):
+            print(f'\t{B[1][x]}')
         Answer = (input('Enter Your Answer (A,B,C,D,): ')).upper()
-        if Answer == B[1]:
+        if Answer == B[2]:
             score = score + 1
             print('Correct!')
         else:
             print(f'Your answer is incorrect the answer is {B[1]}')
-        question_number = question_number + 1
-    print(f'Your Score is {score}/10!')
+    print(f'Your Score is {score}/{question_number}!')
 
 def play_again():
     response = (input("Do you want to play again? (yes or no): ")).upper()
