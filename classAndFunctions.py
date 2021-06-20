@@ -79,7 +79,93 @@ def play_again():
     else:
         return False
 
-   
+#----------------------------------------LOTPLAN
+import math
+import sys
+
+user_input = int(input("Input the number of bearings: "))
+x_comp = []
+y_comp = []
+dmd_sum = []
+product = []
+
+def user(bearing):
+    try:
+        y = bearing[0]
+        z = bearing[2]
+        theta = bearing[1]
+        if z.upper() == "E" or z.upper() == "W":
+            x = bearing[2]
+            mag = float(bearing[3])
+        elif (int(z)) > 0:
+            x = bearing[3]
+            mag = float(bearing[4])
+            theta = (float(theta)) + (int(z)/60)
+
+        theta = math.radians(float(theta))
+        lat = mag * (math.cos(float(theta)))
+        dep = mag * (math.sin(float(theta)))
+        if y.upper() == "S":
+            lat *= -1
+        if x.upper() == "W":
+            dep *= -1
+
+        x_comp.append(lat)
+        y_comp.append(dep)
+
+    except:
+        print("\nOoops! You entered the wrong format.")
+        print("Please refer to the sample input below:")
+        print("Input could be: S 27 29 E 11.81 Meters or N 45 E 15 meters\n")
+        sys.exit()
+
+
+for i in range(int(user_input)):
+    bearing = input(f"Input Bearing No.0{i+1}: ")
+    bearing = bearing.split(" ")
+    unit = bearing[-1]
+    user(bearing)
+
+for a in range(len(y_comp)):
+    if a == 0:
+        q = (y_comp[0])
+    else:
+        q = (dmd_sum[a - 1]) + (y_comp[a - 1]) + (y_comp[a])
+    dmd_sum.append(q)
+
+for b in range(len(x_comp)):
+    da = x_comp[b] * (dmd_sum[b])
+    product.append(da)
+area = sum(product) / 2
+
+total_area = (abs(area))
+
+ques = input("\nWant to Calculate the estimated price of this lot?(Y/N): ")
+
+if ques.upper() == "Y":
+    usin = input("Do you want to input your own price?(Y/N): ")
+    if usin.upper() == "Y":
+        price = float(input("Input the cost per meter square in Peso: "))
+        cost = round(((float(total_area)) * float(price)), 2)
+        print(f"\nArea: {total_area} {unit}²")
+        print(f'The estimated cost of this lot is ₱{cost}')
+
+    elif usin.upper() == "N":
+        print(f"\nArea: {total_area} {unit}²")
+        cost_est = input("\nIs this a Residential Construction?(Y/N): ")
+        if cost_est.upper() == "Y":
+            cost = round(((float(total_area)) * 10590),2)
+            print (f'The estimated cost of this lot is ₱{cost} as of 4th Quarter in 2020.')
+        elif cost_est.upper() == "N":
+            cost = round(((float(total_area)) * 9772),2)
+            print(f'The estimated cost of this lot is ₱{cost} as of 4th Quarter in 2020.')
+
+elif ques.upper() == "N":
+    print(f"\nArea: {total_area} {unit}²")
+    
+#-----------------------------------------------------------LOTPLAN End
+
+
 #---------------------------------Relative motion start
 import math
 
