@@ -12,7 +12,7 @@ def get_dbconn(file, password=None):
 
 def get_question():
 
-    conn_str = 'D:\ENGINEERING\st year 2nd sem\SUBMISSIONS\COMP FUND\PYTHON WORKS\sample.accdb'
+    conn_str = 'D:\ENGINEERING\st year 2nd sem\SUBMISSIONS\COMP FUND\PYTHON WORKS\Questions.accdb'
     conn = get_dbconn(conn_str)
     crsr = conn.cursor()
 
@@ -50,8 +50,7 @@ def get_question():
         question_all.append(questions_full)
         index = index + 1
         questionno = questionno + 1
-
-    return question_all
+    return  question_all
 
 def new_game():
     question_list = get_question()
@@ -61,15 +60,21 @@ def new_game():
     for B in question_list:
         question_number = question_number + 1
         print(f'{question_number}. {B[0]}')
-        for x in range(len(B[1])):
-            print(f'\t{B[1][x]}')
+        Choice = B[1]
+        random.shuffle(Choice)
+        Option = {'A': Choice[0], 'B': Choice[1], 'C': Choice[2], 'D': Choice[3]}
+        for k1, v1 in Option.items():
+            print(f'\t{k1}.{v1}')
         Answer = (input('Enter Your Answer (A,B,C,D,): ')).upper()
-        if Answer == B[2]:
+        for k2, v2 in Option.items():
+            if B[2] == v2:
+                Correct = k2
+        if Answer == Correct:
             score = score + 1
             print('Correct!')
         else:
-            print(f'Your answer is incorrect the answer is {B[2]}')
-    print(f'Your Score is {score}/{question_number}!')
+            print(f'Your answer is incorrect the answer is {Correct}.{v2}')
+    print(f'\tYour Score is {score}/{question_number}!')
 
 def play_again():
     response = (input("Do you want to play again? (yes or no): ")).upper()
