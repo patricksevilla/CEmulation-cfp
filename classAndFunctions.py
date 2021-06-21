@@ -73,7 +73,7 @@ def new_game():
             score = score + 1
             print('Correct!')
         else:
-            print(f'Your answer is incorrect the answer is {Correct}.{v2}')
+            print(f'Your answer is incorrect the answer is {Correct}.{B[2]}')
     print(f'\tYour Score is {score}/{question_number}!')
 
 def play_again():
