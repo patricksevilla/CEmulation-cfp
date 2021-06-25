@@ -6,15 +6,34 @@ function preload() {
 let concept = "home"
 let cchome = (255)
 let ccsubject =  (48, 40, 38)
-let ccquiz =(48, 40, 38)
+let ccquiz = (48, 40, 38)
 let cclotplan = (48, 40, 38)
 let ccabout = (48, 40, 38)
 
 var vid;
+let vidRatio = 2008/1075
+let vidx, vidy, vidWidth, vidHeight
+
+let logoSide = 250
 
 function setup() {
-
-  createCanvas(2008, 1075);
+  createCanvas(windowWidth, windowHeight);
+  
+  //determines the properties of the videos
+  if(vidRatio > (width/height)){
+    vidx = 0
+    vidWidth = width
+    vidHeight = width/vidRatio
+    vidy = height/2 - vidHeight/2 
+  } else {
+    vidHeight = height
+    vidWidth = vidHeight * vidRatio
+    vidx = width/2 - vidWidth/2
+    vidy = 0
+  }
+  
+  
+  
   logo = loadImage('logo.png');
   tab = loadImage('tab.png');
   
@@ -26,10 +45,14 @@ function setup() {
 
 function draw() {
   
-  image(vid, 0, 0);
+  image(vid, vidx, vidy, vidWidth, vidHeight);
 
   image(tab, 0, 0);
-  image(logo, 1075 / 2, height / 5 , logo.height / 3, logo.width / 3 );
+  
+  image(logo,width/2 - logoSide/2 ,height/2 - logoSide/2,logoSide,logoSide)
+
+  // image(logo, 1075 / 2, height / 5 , logo.height / 3, logo.width / 3 );
+  // print(logo.height)
 
   textSize(45)
   textFont(tabFont);
