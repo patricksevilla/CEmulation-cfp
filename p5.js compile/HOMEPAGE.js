@@ -18,7 +18,7 @@ let logoSide = 250
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  
+  textAlign(CENTER, CENTER)
   //determines the properties of the videos
   if(vidRatio > (width/height)){
     vidx = 0
@@ -58,19 +58,19 @@ function draw() {
   textFont(tabFont);
   
   fill(cchome)
-  text('HOME', 250, 55);
+  text('HOME', 0 + width/10 , 27.5);
   
   fill(ccsubject)
-  text('SUBJECT', 590, 55);
+  text('SUBJECT',width/5 + width/10, 27.5);
   
   fill(ccquiz)
-  text('QUIZ', 1000, 55);
+  text('QUIZ', 2*width/5 + width/10, 27.5);
   
   fill(cclotplan)
-  text('LOT PLAN',1360, 55);
+  text('LOT PLAN',3*width/5 + width/10, 27.5);
   
   fill(ccabout)
-  text('ABOUT US', 1720, 55);
+  text('ABOUT US', 4*width/5 + width/10, 27.5);
   
   if(mouseX < 2*width/5 && mouseX > width/5 && mouseY > 0 && mouseY < 50){
     ccsubject = 240
