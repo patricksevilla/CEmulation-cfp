@@ -10,15 +10,27 @@ let ccquiz =(48, 40, 38)
 let cclotplan = (48, 40, 38)
 let ccabout = (48, 40, 38)
 
+var vid;
+
 function setup() {
+
   createCanvas(2008, 1075);
-  img = loadImage('1.jpg');
+  logo = loadImage('logo.png');
+  tab = loadImage('tab.png');
+  
+  vid = createVideo(['bg.mp4']);
+  vid.hide();
+  vid.loop();
+  
 }
 
-
 function draw() {
-  background(img, 0, 0);
   
+  image(vid, 0, 0);
+
+  image(tab, 0, 0);
+  image(logo, 1075 / 2, height / 5 , logo.height / 3, logo.width / 3 );
+
   textSize(45)
   textFont(tabFont);
   
@@ -26,16 +38,16 @@ function draw() {
   text('HOME', 250, 55);
   
   fill(ccsubject)
-  text('SUBJECT', 585, 55);
+  text('SUBJECT', 590, 55);
   
   fill(ccquiz)
-  text('QUIZ', 970, 55)
+  text('QUIZ', 1000, 55);
   
   fill(cclotplan)
-  text('LOT PLAN', 1320, 55)
+  text('LOT PLAN',1360, 55);
   
   fill(ccabout)
-  text('ABOUT US', 1720, 55)
+  text('ABOUT US', 1720, 55);
   
   if(mouseX < 2*width/5 && mouseX > width/5 && mouseY > 0 && mouseY < 50){
     ccsubject = 240
@@ -61,8 +73,6 @@ function draw() {
     ccabout = (48, 40, 38)
   }
 }
-
-  
 
 function mousePressed(){
   if(mouseX < width/5 && mouseX > 0 && mouseY > 0 && mouseY < 50){
