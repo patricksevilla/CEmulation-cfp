@@ -14,11 +14,11 @@ var vid;
 let vidRatio = 2008/1075
 let vidx, vidy, vidWidth, vidHeight
 
-let logoSide = 250
+let logoSide;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  textAlign(CENTER, CENTER)
+  textAlign(CENTER, CENTER); 
   //determines the properties of the videos
   if(vidRatio > (width/height)){
     vidx = 0
@@ -32,7 +32,7 @@ function setup() {
     vidy = 0
   }
   
-  
+  logoSide = vidWidth/2.5
   
   logo = loadImage('logo.png');
   tab = loadImage('tab.png');
@@ -51,8 +51,6 @@ function draw() {
   
   image(logo,width/2 - logoSide/2 ,height/2 - logoSide/2,logoSide,logoSide)
 
-  // image(logo, 1075 / 2, height / 5 , logo.height / 3, logo.width / 3 );
-  // print(logo.height)
 
   textSize(45)
   textFont(tabFont);
@@ -99,8 +97,7 @@ function draw() {
 
 function mousePressed(){
   if(mouseX < width/5 && mouseX > 0 && mouseY > 0 && mouseY < 50){
-    concept = "home"
-    cchome = 255
+    window.open("https://www.w3schools.com");
   }
 }
 
