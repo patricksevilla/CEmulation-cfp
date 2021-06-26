@@ -98,7 +98,7 @@ function draw() {
 function mousePressed(){
   if(mouseX < 2*width/5 && mouseX > width/5 && mouseY > 0 && mouseY < 50){
     print("subject ere")
-    window.open("google.com")
+    window.open('https://google.com')
   } 
   
   if(mouseX < 3*width/5 && mouseX > 2*width/5 && mouseY > 0 && mouseY < 50){
