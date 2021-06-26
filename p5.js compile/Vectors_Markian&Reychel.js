@@ -55,18 +55,21 @@ function makeDoms() {
   iLabel.style('padding: 2px 18px;');
   iLabel.style('background: #c6262e');
   iLabel.style('font-family: courier;');
+  iLabel.position(0,0)
 
   // J
   jLabel = createSpan('(j) y-axis');
   jLabel.style('padding: 2px 18px;');
   jLabel.style('background: #68b723');
   jLabel.style('font-family: courier;');
+  jLabel.position(130,0)
 
   // K
   kLabel = createSpan('(k) z-axis');
   kLabel.style('padding: 2px 18px;');
   kLabel.style('background: #3689e6');
   kLabel.style('font-family: courier;');
+  kLabel.position(260,0)
   createP();
 
   // A (Orange)
