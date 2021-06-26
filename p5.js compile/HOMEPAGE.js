@@ -96,14 +96,23 @@ function draw() {
 }
 
 function mousePressed(){
-  if(mouseX < width/5 && mouseX > 0 && mouseY > 0 && mouseY < 50){
-    window.open("https://www.w3schools.com");
+  if(mouseX < 2*width/5 && mouseX > width/5 && mouseY > 0 && mouseY < 50){
+    print("subject ere")
+    window.open("google.com")
+  } 
+  
+  if(mouseX < 3*width/5 && mouseX > 2*width/5 && mouseY > 0 && mouseY < 50){
+    print("quiz ere")
+    // window.open("")
   }
-}
 
-function mousePressed(){
+  if(mouseX < 4*width/5 && mouseX > 3*width/5 && mouseY > 0 && mouseY < 50){
+    print("lot plan ere")
+    // window.open("https://www.w3schools.com")
+  }
+
   if(mouseX < 5*width/5 && mouseX > 4*width/5 && mouseY > 0 && mouseY < 50){
-    concept = "about"
-    cchome = 255
+    print("about us ere")
+    // window.open("https://www.w3schools.com")
   }
 }
