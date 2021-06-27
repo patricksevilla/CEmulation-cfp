@@ -98,7 +98,7 @@ function draw() {
 function mousePressed(){
   if(mouseX < 2*width/5 && mouseX > width/5 && mouseY > 0 && mouseY < 50){
     print("subject ere")
-    window.open('https://google.com')
+    window.open('https://google.com',"_self")
   } 
   
   if(mouseX < 3*width/5 && mouseX > 2*width/5 && mouseY > 0 && mouseY < 50){
@@ -116,3 +116,5 @@ function mousePressed(){
     // window.open("https://www.w3schools.com")
   }
 }
+
+// https://editor.p5js.org/drewraemonn/sketches/45IwFq8eK
