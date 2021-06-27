@@ -1,17 +1,21 @@
 let x = 0
+let velocity, acceleration, distance
 
 function setup() {
-  createCanvas(2000, 1000);
+  createCanvas(windowWidth, windowHeight);
   img = loadImage('unnamed.png')
+  
   input = createInput();
   input.position(250, 50);
+  
   input1 = createInput();
   input1.position(250, 80);
+  
   input2 = createInput();
   input2.position(250, 110);
   
   
-  button = createButton('Enter');
+  button = createButton('Submit');
   button.position(input.x + input.width, 65);
   button.mousePressed(draw);
 }
@@ -20,17 +24,18 @@ function draw() {
   background(0, 0, 0);
   fill(50, 50, 0)
   image(img, x, 250);
-  let velocity
+  
+  
   velocity = input.value();
   fill(255, 255, 255);
   text("Velocity: " + str(velocity), 50, 50);
   textSize(30);
-  let acceleration
+  
   acceleration = input1.value();
   fill(255, 255, 255);
   text("Acceleration: " + str(acceleration), 50, 80);
   textSize(30);
-  let distance
+  
   distance = input2.value();
   fill(255, 255, 255);
   text("Distance: " + str(distance), 50, 110);
