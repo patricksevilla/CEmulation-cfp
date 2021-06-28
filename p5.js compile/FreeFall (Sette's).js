@@ -1,10 +1,47 @@
 let ylocation = 380
-let velocity = 15
-let initvelo = 15
+let velocity = 5
+let initvelo = 5
+let newVelocity = 0
 let g = -9.81/30
+let showVelocity = '5 m/s'
 
 function setup() {
-  createCanvas(700, 400);
+  createCanvas(1000, 400);
+  button = createButton('PLAY');
+  button.position(10,70);
+  button.mousePressed(ChangeValues);
+  
+  newVelocity = createSlider(0,15,5);
+  newVelocity.position (120,51);
+  newVelocity.size(100);
+  newVelocity.changed(ChangeValues);
+  newVelocity.mouseOver(ShowVelocityChoice);
+  newVelocity.mouseOut(RemoveShow);
+}
+
+function ShowVelocityChoice()
+{
+  showVelocity = newVelocity.value() + ' m/s';
+}
+
+function RemoveShow()
+{
+  showVelocity = ''
+}
+
+
+function ChangeValues()
+{ 
+  if (isNaN(newVelocity.value()))
+    {
+      velocity = 5;
+      initvelo = 5;
+    }
+  else
+    {
+      velocity = newVelocity.value();
+      initvelo = newVelocity.value();
+    }
 }
 
 function lining()
@@ -13,15 +50,15 @@ function lining()
   if (velocity >=0)
   {
     a = ylocation;
-    line (100, 380, 100, ylocation);
+    line (400, 380, 400, ylocation);
   }
   else
     {
-      line (100, 380, 100, a);
-      line (80, a, 120, a);
+      line (400, 380, 400, a);
+      line (380, a, 420, a);
       maxH = 'Maximum Height: ' + ((380-a)/30) + ' m';
       textSize(15);
-      text(maxH, 125, a+3);
+      text(maxH, 425, a+3);
     }
 }
 
@@ -30,18 +67,18 @@ function FreeBodyDiagram()
   if (velocity >=0)
   {
     z = ylocation;
-    line (480, 380, 480, ylocation);
+    line (780, 380, 780, ylocation);
   }
   else
     {
       textSize(15)
-      text('Free Body Diagram', 420, a-5)
-      line (480, 380, 480, (z+2));
-      line (480, (z+2), 490, (z-1));
-      line (490, (z-1), 500, (z+2));
-      line (500, (z+2), 500, 380);
-      line (498, 375, 500, 380);
-      line (502, 375, 500, 380)
+      text('Free Body Diagram', 720, a-5)
+      line (780, 380, 780, (z+2));
+      line (780, (z+2), 790, (z-1));
+      line (790, (z-1), 800, (z+2));
+      line (800, (z+2), 800, 380);
+      line (798, 375, 800, 380);
+      line (802, 375, 800, 380)
     }
 }
 
@@ -50,7 +87,7 @@ function displayHeights()
   b = mouseY;
   h = 'Height: ' + ((380-b)/30) + ' m';
   textSize(15);
-  text(h, 200, 150);
+  text(h, 500, 150);
 }
 
 function displaySpeedUpward()
@@ -63,7 +100,7 @@ function displaySpeedUpward()
     }
   vPos = 'Velocity: ' + v + ' m/s';
   textSize(15);
-  text(vPos, 200, 170);
+  text(vPos, 500, 170);
 }
 
 function displayTimeUpward()
@@ -71,7 +108,7 @@ function displayTimeUpward()
   t = ((v-initvelo)/g);
   tUpward = 'Time: ' + (t/30)+' s';
   textSize(15);
-  text(tUpward, 200, 190);
+  text(tUpward, 500, 190);
 }
 
 function displayDetailsUpward()
@@ -91,7 +128,7 @@ function displaySpeedDownward()
     }
   vNeg = 'Velocity: ' + (vd*(-1)) + ' m/s';
   textSize(15);
-  text(vNeg, 200, 170);
+  text(vNeg, 500, 170);
 }
 
 function displayTimeDownward()
@@ -106,7 +143,7 @@ function displayTimeDownward()
   t = tAtMax - ((v-initvelo)/g);
   tDownward = 'Time: ' + ((tAtMax/30)+(t/30)) + ' s';
   textSize(15);
-  text(tDownward, 200, 190);
+  text(tDownward, 500, 190);
 }
 
 function displayDetailsDownward()
@@ -116,9 +153,18 @@ function displayDetailsDownward()
   displayTimeDownward()
 }
 
-
-function draw() {
-  background(220)
+function draw() 
+{
+  background(135, 206, 250);
+  textSize(30);
+  textFont('Comic Sans MS');
+  text('Free Fall Simulation', 10, 35);
+  textSize(15);
+  text('Initial Velocity',10, 65 );
+  
+  textSize(15);
+  text(showVelocity, 122, 80);
+  
   if (velocity >= 0)
     {
       ylocation = ylocation - velocity;
@@ -134,26 +180,26 @@ function draw() {
     }
   velocity = velocity + g;
   lining ();
-  circle(100,ylocation, 20);
+  circle(400,ylocation, 20);
   FreeBodyDiagram();
   
-  if (mouseX >= 477 && mouseX <= 483 && mouseY <= 380 && mouseY >= a)
+  if (mouseX >= 777 && mouseX <= 783 && mouseY <= 380 && mouseY >= a)
   {
     displayDetailsUpward();
-    fill (220, 0, 0)
+    fill (65, 105, 225)
   }
   else
   {
-    if(mouseX >= 497 && mouseX <= 503 && mouseY <= 380 && mouseY >= a)
+    if(mouseX >= 797 && mouseX <= 803 && mouseY <= 380 && mouseY >= a)
   {
     displayDetailsDownward();
-    fill (0, 0, 220)
+    fill (255, 99, 71)
   }
   else
     {
-      fill(50, 205, 50)
+      fill(128, 128, 0)
     }
   }
-  
 }
+
   
