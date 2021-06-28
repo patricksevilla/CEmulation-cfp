@@ -1,4 +1,3 @@
-//dito po kapag sa p5 editor naggawa
 let carA_x = 100;
 let carA_y = 370;
 let carA_yvelo = 0;
@@ -7,6 +6,7 @@ let carB_y = 30;
 let carB_yvelo = 0;
 let rectpos = 0;
 let carA;
+let angle = 180
 
 function preload() {
   carA = loadImage("carpng.png");
@@ -15,7 +15,7 @@ function preload() {
 
 function setup() {
   createCanvas(400, 400);
-  imageMode(CENTER)
+  imageMode(CENTER);
   angleMode(DEGREES);
   showrelativemotion();
   inputCarA_yvelo = createInput("Input Velocity of A");
@@ -32,6 +32,7 @@ function draw() {
   fill(10, 10, 20);
   if (carA_y >= height || carA_y <= 0) {
     carA_yvelo = carA_yvelo * -1;
+    angle = angle + 180
   }
   if (carB_y >= height || carB_y <= 0) {
     carB_yvelo = carB_yvelo * -1;
@@ -39,11 +40,23 @@ function draw() {
   carB_y = carB_y + carB_yvelo;
   carA_y = carA_y + carA_yvelo;
   textSize(20);
-  fill(200,190,10);  
-  text("VELOCITY OF A: " + str(-carA_yvelo * 40), 0, 20,100);
+  fill(200, 190, 10);
+  text("VELOCITY OF A: " + str(-carA_yvelo * 40), 0, 20, 100);
   text("VELOCITY OF B: " + str(-carB_yvelo * 40), 150, 390);
-  image(carA, carA_x, carA_y, 32, 52);
-  image(carB, carB_x, carB_y, 32, 52);
+  
+  
+
+  push()
+  translate(carA_x, carA_y)
+  rotate(angle + 180)
+  image(carA, 0, 0, 32, 52);
+  pop()
+  
+  push()
+  translate(carB_x, carB_y)
+  rotate(angle)
+  image(carB, 0, 0, 32, 52);
+  pop()
 }
 
 function submitTheInput() {
@@ -51,7 +64,7 @@ function submitTheInput() {
   carB_yvelo = -parseInt(inputCarB_yvelo.value()) / 40;
 }
 
-function showrelativemotion(){
+function showrelativemotion() {
   carB_yvelo = carA_yvelo - carB_yvelo;
-  carA_yvelo *= 0
-}//di ko na kaya antok2
+  carA_yvelo *= 0;
+}
