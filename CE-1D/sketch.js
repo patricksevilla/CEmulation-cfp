@@ -6,15 +6,34 @@ function preload() {
 let concept = "home"
 let cchome = (255)
 let ccsubject =  (48, 40, 38)
-let ccquiz =(48, 40, 38)
+let ccquiz = (48, 40, 38)
 let cclotplan = (48, 40, 38)
 let ccabout = (48, 40, 38)
 
 var vid;
+let vidRatio = 2008/1075
+let vidx, vidy, vidWidth, vidHeight
+
+let logoSide;
 
 function setup() {
-
-  createCanvas(2008, 1075);
+  createCanvas(windowWidth, windowHeight);
+  textAlign(CENTER, CENTER); 
+  //determines the properties of the videos
+  if(vidRatio > (width/height)){
+    vidx = 0
+    vidWidth = width
+    vidHeight = width/vidRatio
+    vidy = height/2 - vidHeight/2 
+  } else {
+    vidHeight = height
+    vidWidth = vidHeight * vidRatio
+    vidx = width/2 - vidWidth/2
+    vidy = 0
+  }
+  
+  logoSide = vidWidth/2.5
+  
   logo = loadImage('logo.png');
   tab = loadImage('tab.png');
   
@@ -26,28 +45,30 @@ function setup() {
 
 function draw() {
   
-  image(vid, 0, 0);
+  image(vid, vidx, vidy, vidWidth, vidHeight);
 
   image(tab, 0, 0);
-  image(logo, 1075 / 2, height / 5 , logo.height / 3, logo.width / 3 );
+  
+  image(logo,width/2 - logoSide/2 ,height/2 - logoSide/2,logoSide,logoSide)
+
 
   textSize(45)
   textFont(tabFont);
   
   fill(cchome)
-  text('HOME', 250, 55);
+  text('HOME', 0 + width/10 , 27.5);
   
   fill(ccsubject)
-  text('SUBJECT', 590, 55);
+  text('SUBJECT',width/5 + width/10, 27.5);
   
   fill(ccquiz)
-  text('QUIZ', 1000, 55);
+  text('QUIZ', 2*width/5 + width/10, 27.5);
   
   fill(cclotplan)
-  text('LOT PLAN',1360, 55);
+  text('LOT PLAN',3*width/5 + width/10, 27.5);
   
   fill(ccabout)
-  text('ABOUT US', 1720, 55);
+  text('ABOUT US', 4*width/5 + width/10, 27.5);
   
   if(mouseX < 2*width/5 && mouseX > width/5 && mouseY > 0 && mouseY < 50){
     ccsubject = 240
@@ -75,15 +96,25 @@ function draw() {
 }
 
 function mousePressed(){
-  if(mouseX < width/5 && mouseX > 0 && mouseY > 0 && mouseY < 50){
-    concept = "home"
-    cchome = 255
+  if(mouseX < 2*width/5 && mouseX > width/5 && mouseY > 0 && mouseY < 50){
+    print("subject ere")
+    window.open('https://google.com',"_self")
+  } 
+  
+  if(mouseX < 3*width/5 && mouseX > 2*width/5 && mouseY > 0 && mouseY < 50){
+    print("quiz ere")
+    // window.open("")
+  }
+
+  if(mouseX < 4*width/5 && mouseX > 3*width/5 && mouseY > 0 && mouseY < 50){
+    print("lot plan ere")
+    // window.open("https://www.w3schools.com")
+  }
+
+  if(mouseX < 5*width/5 && mouseX > 4*width/5 && mouseY > 0 && mouseY < 50){
+    print("about us ere")
+    // window.open("https://www.w3schools.com")
   }
 }
 
-function mousePressed(){
-  if(mouseX < 5*width/5 && mouseX > 4*width/5 && mouseY > 0 && mouseY < 50){
-    concept = "about"
-    cchome = 255
-  }
-}
+// https://editor.p5js.org/drewraemonn/sketches/45IwFq8eK
