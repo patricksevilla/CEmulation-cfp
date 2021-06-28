@@ -1,20 +1,20 @@
-let carA_x = 100;
-let carA_y = 370;
+let carA_x = 273;
+let carA_y = 440;
 let carA_yvelo = 0;
-let carB_x = 300;
-let carB_y = 30;
+let carB_x = 489;
+let carB_y = 40;
 let carB_yvelo = 0;
 let rectpos = 0;
-let carA;
-let angle = 180
+let angle = 180;
 
 function preload() {
+  bg = loadImage("bg1.png");
   carA = loadImage("carpng.png");
   carB = loadImage("carpng2.png");
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
   imageMode(CENTER);
   angleMode(DEGREES);
   showrelativemotion();
@@ -23,40 +23,36 @@ function setup() {
   submitCarA_yvelo = createButton("MOVE");
   submitCarA_yvelo.mousePressed(submitTheInput);
   relativemotion = createButton("Push to see Relative Motion");
-  relativemotion.position(0, 430);
+  relativemotion.position(0, 460);
   relativemotion.mousePressed(showrelativemotion);
 }
 
 function draw() {
-  background(220);
-  fill(10, 10, 20);
-  if (carA_y >= height || carA_y <= 0) {
+  image(bg, width / 2, height / 2.05, width, height);
+  if (carA_y >= windowHeight || carA_y <= 0) {
     carA_yvelo = carA_yvelo * -1;
-    angle = angle + 180
+    angle = angle + 180;
   }
-  if (carB_y >= height || carB_y <= 0) {
+  if (carB_y >= windowHeight || carB_y <= 0) {
     carB_yvelo = carB_yvelo * -1;
   }
   carB_y = carB_y + carB_yvelo;
   carA_y = carA_y + carA_yvelo;
   textSize(20);
-  fill(200, 190, 10);
-  text("VELOCITY OF A: " + str(-carA_yvelo * 40), 0, 20, 100);
-  text("VELOCITY OF B: " + str(-carB_yvelo * 40), 150, 390);
-  
-  
-
-  push()
-  translate(carA_x, carA_y)
-  rotate(angle + 180)
+  fill(0, 0, 0);
+  text("VELOCITY OF A: " + str(-carA_yvelo * 40), 24, 13, 130);
+  text("VELOCITY", 600, 470);
+  text(" OF B: " + str(-carB_yvelo * 40), 600, 490);
+  push();
+  translate(carA_x, carA_y);
+  rotate(angle + 180);
   image(carA, 0, 0, 32, 52);
-  pop()
-  
-  push()
-  translate(carB_x, carB_y)
-  rotate(angle)
+  pop();
+  push();
+  translate(carB_x, carB_y);
+  rotate(angle);
   image(carB, 0, 0, 32, 52);
-  pop()
+  pop();
 }
 
 function submitTheInput() {
