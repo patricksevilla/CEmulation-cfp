@@ -7,6 +7,7 @@ let boxwidth;
 let boxheight;
 let space;
 let xcoorBoxConst
+let subjectList = ["Vectors", "Average Speed, Velocity & Acceleratio", "Instantaneous Velocity", "Acceleration", "Motion in 1 Dimension (Horizontal)", "Free Fall", "Projectile Motion", "Uniform Circular Motion", "Non-Uniform Circular Motion", "Relative Motion"]
 
 function preload(){
   bg = loadImage('Kinematics.jpg')
@@ -14,6 +15,7 @@ function preload(){
 
 function setup(){
   createCanvas(windowWidth,windowWidth * ratio)
+  textAlign(CENTER);
 }
 
 function draw(){
@@ -29,34 +31,32 @@ function draw(){
   
   for(let i = 0; i < 3; i++){
     rect(xcoorBox,ycoorBox,boxwidth,boxheight)
+    text(subjectList[i], xcoorBox + (boxwidth/2), ycoorBox + (boxheight/2) )
     xcoorBox += boxwidth + space
   } 
   
   xcoorBox = xcoorBoxConst
   ycoorBox += space + boxheight
-  for(let i = 0; i < 3; i++){
+  for(let i = 3; i < 6; i++){
     rect(xcoorBox,ycoorBox,boxwidth,boxheight)
+    text(subjectList[i], xcoorBox + (boxwidth/2), ycoorBox + (boxheight/2) )
     xcoorBox += boxwidth + space
   } 
   
   xcoorBox = xcoorBoxConst
   ycoorBox += space + boxheight
-  for(let i = 0; i < 3; i++){
+  for(let i = 6; i < 9; i++){
     rect(xcoorBox,ycoorBox,boxwidth,boxheight)
+    text(subjectList[i], xcoorBox + (boxwidth/2), ycoorBox + (boxheight/2) )
     xcoorBox += boxwidth + space
   } 
   
-  
+}
 
-
-  
-//   rect(xcoorBox,ycoorBox,boxwidth,boxheight)
-
-//   xcoorBox += boxwidth + space
-//   rect(xcoorBox,ycoorBox,boxwidth,boxheight)
-  
-//   ycoorBox += boxheight + space
-    
-//   rect(xcoorBox,ycoorBox,boxwidth,boxheight)
+function mousePressed(){
+  print(xcoorBox)
+  if(mouseX < xcoorBox){
+    print("hi")
+  }
 }
 
