@@ -1,7 +1,7 @@
-let xloc = 30;
-let yloc = 300;
+let xloc = 55;
+let yloc = 290;
 let x = 0
-let y = 285
+let y = 260
 let xspeed = 10;
 let yspeed = -13;
 let acceleration = 9.81 / 30;
@@ -11,8 +11,8 @@ let pathy = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
   img1 = loadImage('bbg.jpg')
-  img2 = loadImage('Cannonball.png')
-  img3 = loadImage('cannon.png')
+  img2 = loadImage('CANNONBALL.png')
+  img3 = loadImage('CANNON.png')
 }
 
 function draw() {
@@ -41,8 +41,8 @@ function displayPath() {
 }
 
 function displayProjectile() {
-  image(img2, xloc, yloc, 30, 30);
-  image(img3, x, y, 50, 50)
+  image(img2, xloc, yloc, 20, 20);
+  image(img3, x, y, 80, 80)
 }
 
 function moveProjectile() {
