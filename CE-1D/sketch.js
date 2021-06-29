@@ -103,7 +103,7 @@ function mousePressed(){
   
   if(mouseX < 3*width/5 && mouseX > 2*width/5 && mouseY > 0 && mouseY < 50){
     print("quiz ere")
-    // window.open("")
+    window.open("https://editor.p5js.org/ioewyzh/present/zJljCsiqM")
   }
 
   if(mouseX < 4*width/5 && mouseX > 3*width/5 && mouseY > 0 && mouseY < 50){
