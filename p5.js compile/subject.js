@@ -41,6 +41,7 @@ function draw(){
     rect(xcoorBox,ycoorBox,boxwidth,boxheight)
     text(subjectList[i], xcoorBox + (boxwidth/2), ycoorBox + (boxheight/2) )
     xcoorBox += boxwidth + space
+  
   } 
   
   xcoorBox = xcoorBoxConst
@@ -54,9 +55,6 @@ function draw(){
 }
 
 function mousePressed(){
-  print(xcoorBox)
-  if(mouseX < xcoorBox){
-    print("hi")
-  }
+  
 }
 
