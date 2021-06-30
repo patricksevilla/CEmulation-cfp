@@ -98,12 +98,13 @@ function draw() {
 function mousePressed(){
   if(mouseX < 2*width/5 && mouseX > width/5 && mouseY > 0 && mouseY < 50){
     print("subject ere")
-    window.open('https://google.com',"_self")
+    window.open('https://editor.p5js.org/ioewyzh/present/zJljCsiqM',"_self")
   } 
   
   if(mouseX < 3*width/5 && mouseX > 2*width/5 && mouseY > 0 && mouseY < 50){
     print("quiz ere")
-    window.open("https://editor.p5js.org/ioewyzh/present/zJljCsiqM")
+    window.open('https://patricksevilla.github.io/CFP-Project/',"_self")
+    
   }
 
   if(mouseX < 4*width/5 && mouseX > 3*width/5 && mouseY > 0 && mouseY < 50){
