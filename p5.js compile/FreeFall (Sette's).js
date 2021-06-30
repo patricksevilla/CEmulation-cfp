@@ -4,20 +4,45 @@ let initvelo = 5
 let newVelocity = 0
 let g = -9.81/30
 let showVelocity = '5 m/s'
+var vid;
+let vidRatio = 2008/1075
+let vidx, vidy, vidWidth, vidHeight;
 
 function setup() {
-  createCanvas(1000, 400);
+  createCanvas(windowWidth, windowHeight);
+  
+   if(vidRatio > (width/height))
+   {
+    vidx = 0;
+    vidWidth = width;
+    vidHeight = width/vidRatio;
+    vidy = height/2 - vidHeight/2; 
+    } 
+  else 
+  {
+    vidHeight = height;
+    vidWidth = vidHeight * vidRatio;
+    vidx = width/2 - vidWidth/2;
+    vidy = 0;
+  }
+  
+  vid = createVideo(['FreeFall BG1.mp4']);
+  vid.hide();
+  vid.loop();
+  
   button = createButton('PLAY');
-  button.position(10,70);
+  button.position(vidx+30 ,238);
   button.mousePressed(ChangeValues);
   
   newVelocity = createSlider(0,15,5);
-  newVelocity.position (120,51);
+  newVelocity.position (vidx+145,213);
   newVelocity.size(100);
   newVelocity.changed(ChangeValues);
   newVelocity.mouseOver(ShowVelocityChoice);
   newVelocity.mouseOut(RemoveShow);
+  
 }
+
 
 function ShowVelocityChoice()
 {
@@ -155,15 +180,9 @@ function displayDetailsDownward()
 
 function draw() 
 {
-  background(135, 206, 250);
-  textSize(30);
-  textFont('Comic Sans MS');
-  text('Free Fall Simulation', 10, 35);
+  image(vid, vidx, vidy, vidWidth, vidHeight);
   textSize(15);
-  text('Initial Velocity',10, 65 );
-  
-  textSize(15);
-  text(showVelocity, 122, 80);
+  text(showVelocity, vidx+148, 245);
   
   if (velocity >= 0)
     {
