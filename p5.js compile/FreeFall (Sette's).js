@@ -5,7 +5,7 @@ let newVelocity = 0
 let g = -9.81/30
 let showVelocity = '5 m/s'
 var vid;
-let vidRatio = 2008/1075
+let vidRatio = 1920/1080
 let vidx, vidy, vidWidth, vidHeight;
 
 function setup() {
@@ -75,15 +75,15 @@ function lining()
   if (velocity >=0)
   {
     a = ylocation;
-    line (400, 380, 400, ylocation);
+    line (width*0.56, 380, width*0.56, ylocation);
   }
   else
     {
-      line (400, 380, 400, a);
-      line (380, a, 420, a);
-      maxH = 'Maximum Height: ' + ((380-a)/30) + ' m';
+      line (width*0.56, 380, width*0.56, a);
+      line (width*0.56 - 20, a, width*0.56 + 20, a);
+      maxH = 'Maximum Height: ' + round(((380-a)/30),2) + ' m';
       textSize(15);
-      text(maxH, 425, a+3);
+      text(maxH, width * 0.56 + 25, a+3);
     }
 }
 
@@ -92,18 +92,18 @@ function FreeBodyDiagram()
   if (velocity >=0)
   {
     z = ylocation;
-    line (780, 380, 780, ylocation);
+    line (width * 0.78, 380, width * 0.78, ylocation);
   }
   else
     {
       textSize(15)
-      text('Free Body Diagram', 720, a-5)
-      line (780, 380, 780, (z+2));
-      line (780, (z+2), 790, (z-1));
-      line (790, (z-1), 800, (z+2));
-      line (800, (z+2), 800, 380);
-      line (798, 375, 800, 380);
-      line (802, 375, 800, 380)
+      text('Free Body Diagram', width * 0.72, a-5)
+      line (width * 0.78, 380, width * 0.78, (z+2));
+      line (width * 0.78, (z+2), width * 0.79, (z-1));
+      line (width * 0.79, (z-1), width * 0.8, (z+2));
+      line (width * 0.8, (z+2), width * 0.8, 380);
+      line (width * 0.798, 375, width * 0.8, 380);
+      line (width * 0.802, 375, width * 0.8, 380)
     }
 }
 
@@ -199,7 +199,7 @@ function draw()
     }
   velocity = velocity + g;
   lining ();
-  circle(400,ylocation, 20);
+  circle(width*0.56,ylocation, 20);
   FreeBodyDiagram();
   
   if (mouseX >= 777 && mouseX <= 783 && mouseY <= 380 && mouseY >= a)
