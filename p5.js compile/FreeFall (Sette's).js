@@ -4,52 +4,25 @@ let initvelo = 7
 let newVelocity = 0
 let g = -9.81/30
 let showVelocity = '7 m/s'
-var vid;
-let vidRatio = 1920/1080
-let vidx, vidy, vidWidth, vidHeight;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  
-   if(vidRatio > (width/height))
-   {
-    vidx = 0;
-    vidWidth = width;
-    vidHeight = width/vidRatio;
-    vidy = height/2 - vidHeight/2; 
-    } 
-  else 
-  {
-    vidHeight = height;
-    vidWidth = vidHeight * vidRatio;
-    vidx = width/2 - vidWidth/2;
-    vidy = 0;
-  }
-  
-  vid = createVideo(['FreeFall BG1.mp4']);
-  vid.hide();
-  vid.loop();
-  
+  createCanvas(960, 540);
   button = createButton('PLAY');
-  
-
-  if(vidRatio > (width/height))
-   {
-    button.position(width*0.044,height*0.48);  
-   }else{
-     button.position(width*0.044 + vidx,height*0.48)
-   }
+  button.position(43,260);
   button.mousePressed(ChangeValues);
   
   newVelocity = createSlider(0,17,7);
-  newVelocity.position (width*0.158,height*0.437);
+  newVelocity.position (152,236);
   newVelocity.size(100);
   newVelocity.changed(ChangeValues);
   newVelocity.mouseOver(ShowVelocityChoice);
   newVelocity.mouseOut(RemoveShow);
   
 }
-
+function preload()
+{
+img = loadImage('bgimage.png');  
+}
 
 function ShowVelocityChoice()
 {
@@ -82,15 +55,15 @@ function lining()
   if (velocity >=0)
   {
     a = ylocation;
-    line (width*0.56, 500, width*0.56, ylocation);
+    line (500, 500, 500, ylocation);
   }
   else
     {
-      line (width*0.56, 500, width*0.56, a);
-      line (width*0.56 - 20, a, width*0.56 + 20, a);
-      maxH = 'Maximum Height: ' + round(((500-a)/30),2) + ' m';
+      line (500, 500, 500, a);
+      line (480, a, 520, a);
+      maxH = 'Maximum Height: ' + round(((500-a)/30), 4) + ' m';
       textSize(15);
-      text(maxH, width * 0.56 +10, a+15);
+      text(maxH, 525, a+3);
     }
 }
 
@@ -99,18 +72,18 @@ function FreeBodyDiagram()
   if (velocity >=0)
   {
     z = ylocation;
-    line (width * 0.80, 500, width * 0.80, ylocation);
+    line (800, 500, 800, ylocation);
   }
   else
     {
       textSize(15)
-      text('Free Body Diagram', width * 0.75, a-5)
-      line (width * 0.80, 500, width * 0.80, (z+2));
-      line (width * 0.80, (z+2), width * 0.81, (z-1));
-      line (width * 0.81, (z-1), width * 0.82, (z+2));
-      line (width * 0.82, (z+2), width * 0.82, 500);
-      line (width * 0.82 -2, 495, width * 0.82, 500);
-      line (width * 0.82 +2, 495, width * 0.82, 500)
+      text('Free Body Diagram', 740, a-5)
+      line (800, 500, 800, (z+2));
+      line (800, (z+2), 810, (z-1));
+      line (810, (z-1), 820, (z+2));
+      line (820, (z+2), 820, 500);
+      line (818, 495, 820, 500);
+      line (822, 495, 820, 500)
     }
 }
 
@@ -119,7 +92,7 @@ function displayHeights()
   b = mouseY;
   h = round(((500-b)/30), 4) + ' m';
   textSize(15);
-  text(h, width*0.1021, height*0.8759 -9);
+  text(h, 98, 473);
 }
 
 function displaySpeedUpward()
@@ -132,7 +105,7 @@ function displaySpeedUpward()
     }
   vPos = round(v, 4) + ' m/s';
   textSize(15);
-  text(vPos, width*0.1073 + 2, height*0.8759 + 11);
+  text(vPos, 103, 492);
 }
 
 function displayTimeUpward()
@@ -140,7 +113,7 @@ function displayTimeUpward()
   t = ((v-initvelo)/g);
   tUpward = round((t/30), 4)+' s';
   textSize(15);
-  text(tUpward, width*0.1021 -13, height*0.8759 +30);
+  text(tUpward, 86, 512);
 }
 
 function displayDetailsUpward()
@@ -160,7 +133,7 @@ function displaySpeedDownward()
     }
   vNeg = round((vd*(-1)), 4) + ' m/s';
   textSize(15);
-  text(vNeg, width*0.1073 + 2, height*0.8759 + 11);
+  text(vNeg, 103, 492);
 }
 
 function displayTimeDownward()
@@ -175,7 +148,7 @@ function displayTimeDownward()
   t = tAtMax - ((v-initvelo)/g);
   tDownward = round(((tAtMax/30)+(t/30)), 4) + ' s';
   textSize(15);
-  text(tDownward, width*0.1021 -13, height*0.8759 +30);
+  text(tDownward, 86, 512);
 }
 
 function displayDetailsDownward()
@@ -187,7 +160,8 @@ function displayDetailsDownward()
 
 function draw() 
 {
-  image(vid, vidx, vidy, vidWidth, vidHeight);
+  //background(135, 206, 250);
+  image(img,0,0)
   
   if (velocity >= 0)
     {
@@ -204,22 +178,22 @@ function draw()
     }
   velocity = velocity + g;
   lining ();
-  circle(width*0.56,ylocation, 20);
+  circle(500,ylocation, 20);
   FreeBodyDiagram();
   
   fill(220);
   textFont('Comic Sans MS');
   textSize(15);
-  text(showVelocity, width*0.158+3, height*0.4925);
+  text(showVelocity, 156, 266);
   
-  if (mouseX >= (width*0.80 - 3) && mouseX <= (width*0.80 + 3) && mouseY <= 500 && mouseY >= a)
+  if (mouseX >= 797 && mouseX <= 803 && mouseY <= 380 && mouseY >= a)
   {
     displayDetailsUpward();
     fill (65, 105, 225)
   }
   else
   {
-    if(mouseX >= (width*0.82 - 3) && mouseX <= (width*0.82 + 3) && mouseY <= 500 && mouseY >= a)
+    if(mouseX >= 817 && mouseX <= 823 && mouseY <= 500 && mouseY >= a)
   {
     displayDetailsDownward();
     fill (255, 99, 71)
@@ -230,3 +204,5 @@ function draw()
     }
   }
 }
+
+  
