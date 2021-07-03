@@ -31,7 +31,14 @@ function setup() {
   vid.loop();
   
   button = createButton('PLAY');
-  button.position(width*0.044,height*0.48);
+  
+
+  if(vidRatio > (width/height))
+   {
+    button.position(width*0.044,height*0.48);  
+   }else{
+     button.position(width*0.044 + vidx,height*0.48)
+   }
   button.mousePressed(ChangeValues);
   
   newVelocity = createSlider(0,17,7);
