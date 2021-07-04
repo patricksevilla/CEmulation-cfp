@@ -7,25 +7,26 @@ let acceleration
 let state = "not moving"
 
 function setup() {
-  createCanvas(2000, 1000);
+  createCanvas(windowWidth, windowHeight);
   
   img = loadImage('unnamed.png')
+  bg = loadImage('cartoon-landscape-lovely-cute-scenery-design-cartoon-landscape-lovely-cute-scenery-design-provided-empty-area-127291529.jpg')
   
   input = createInput();
   input.position(0, 25);
-  input.size(120, 30);
+  input.size(100, 30);
   
   input1 = createInput();
   input1.position(0, 85);
-  input1.size(120, 30);
+  input1.size(100, 30);
   
   input2 = createInput();
   input2.position(0, 145);
-  input2.size(120, 30);
+  input2.size(100, 30);
   
   button = createButton('Enter');
   button.position(0, 195);
-  button.size(100, 30);
+  button.size(120, 30);
   button.mousePressed(run);
 }
 
@@ -41,15 +42,16 @@ function run() {
 }
 
 function draw() {
-  background(0, 0, 0);
+  background(bg);
+  textFont("monospace");
   
-  fill(255, 255, 255);
+  fill(0, 0, 0);
   text("Enter Initial Velocity:", 0, 20);
   
-  fill(255, 255, 255);
+  fill(0, 0, 0);
   text("Enter Acceleration:", 0, 80);
   
-  fill(255, 255, 255);
+  fill(0, 0, 0);
   text("Enter Distance:", 0, 140);
   
   if(state == "not moving"){
@@ -71,33 +73,33 @@ function draw() {
     }
   }
   
-  fill(255, 255, 255);
-  text("Initial Velocity: " + str(int_velocity), x + 300, (height/3) + 50);
+  fill(0, 0, 0);
+  text("Initial Velocity: " + str(int_velocity), x + 300, (height/1.5) + 50);
   textSize(20);
   
-  fill(255, 255, 255);
-  text("Acceleration: " + str(acceleration), x + 300, (height/3) + 70);
+  fill(0, 0, 0);
+  text("Acceleration: " + str(acceleration), x + 300, (height/1.5) + 70);
   textSize(20);
   
-  fill(255, 255, 255);
-  text("Final Velocity: " + str(fin_velocity), x + 300, (height/3) + 90);
+  fill(0, 0, 0);
+  text("Final Velocity: " + str(fin_velocity), x + 300, (height/1.5) + 90);
   textSize(20);
   
-  fill(255, 255, 255);
-  text("Time: " + str(time), x + 300, (height/3) + 110);
+  fill(0, 0, 0);
+  text("Time: " + str(time), x + 300, (height/1.5) + 110);
   textSize(20);
   
-  fill(255, 255, 255);
-  text("Formula:", 10, 700);
+  fill(0, 0, 0);
+  text("Formula:", 500, 20);
   
-  fill(255, 255, 255);
-  text("V² = Vₒ² + 2a (x - xₒ)", 10, 730);
+  fill(0, 0, 0);
+  text("V² = Vₒ² + 2a (x - xₒ)", 500, 50);
   
-  fill(255, 255, 255);
-  text("V = Vₒ + at", 500, 730);
+  fill(0, 0, 0);
+  text("V = Vₒ + at", 500, 80);
   
   if(x >= width){
     x = width
   }
-  image(img,x,height/3, 300)
+  image(img,x, height/1.5, 300)
 }
