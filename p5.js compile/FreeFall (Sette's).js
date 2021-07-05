@@ -126,7 +126,14 @@ function displayHeights()
   b = mouseY;
   h = round(((500-b)/30), 4) + ' m';
   textSize(15);
-  text(h, width*0.1021, height*0.8759 -9);
+  if(vidRatio > (width/height))
+  {
+    text(h, width*0.1021, height*0.8759 -vidy);
+  }
+  else
+    {
+      text(h, (width*0.1021) +vidx, height*0.880);
+    }
 }
 
 function displaySpeedUpward()
@@ -139,7 +146,14 @@ function displaySpeedUpward()
     }
   vPos = round(v, 4) + ' m/s';
   textSize(15);
-  text(vPos, width*0.1073 + 2, height*0.8759 + 11);
+  if(vidRatio > (width/height))
+  {
+    text(vPos, width*0.1073 + 2, height*0.910 -vidy);
+  }
+  else
+    {
+      text(vPos, width*0.1073 + 2 +vidx, height*0.910);
+    }
 }
 
 function displayTimeUpward()
@@ -147,7 +161,14 @@ function displayTimeUpward()
   t = ((v-initvelo)/g);
   tUpward = round((t/30), 4)+' s';
   textSize(15);
-  text(tUpward, width*0.1021 -13, height*0.8759 +30);
+  if(vidRatio > (width/height))
+  {
+    text(tUpward, width*0.1021 -13, height*0.940 -vidy);
+  }
+  else
+    {
+      text(tUpward, width*0.1021 -13 +vidx, height*0.940);
+    }
 }
 
 function displayDetailsUpward()
@@ -167,7 +188,14 @@ function displaySpeedDownward()
     }
   vNeg = round((vd*(-1)), 4) + ' m/s';
   textSize(15);
-  text(vNeg, width*0.1073 + 2, height*0.8759 + 11);
+  if(vidRatio > (width/height))
+  {
+    text(vNeg, width*0.1073 + 2, height*0.910 -vidy);
+  }
+  else
+    {
+      text(vNeg, width*0.1073 + 2 +vidx, height*0.910);
+    }
 }
 
 function displayTimeDownward()
@@ -182,7 +210,14 @@ function displayTimeDownward()
   t = tAtMax - ((v-initvelo)/g);
   tDownward = round(((tAtMax/30)+(t/30)), 4) + ' s';
   textSize(15);
-  text(tDownward, width*0.1021 -13, height*0.8759 +30);
+  if(vidRatio > (width/height))
+  {
+    text(tDownward, width*0.1021 -13, height*0.940-vidy);
+  }
+  else
+    {
+      text(tDownward, width*0.1021 -13 +vidx, height*0.940);
+    }
 }
 
 function displayDetailsDownward()
