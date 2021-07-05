@@ -128,7 +128,7 @@ function displayHeights()
   textSize(15);
   if(vidRatio > (width/height))
   {
-    text(h, width*0.1021, height*0.8759 -vidy);
+    text(h, width*0.1021, height*0.880 -vidy);
   }
   else
     {
