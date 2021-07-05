@@ -1,54 +1,14 @@
-function setup() {
-  createCanvas(600, 400);
-}
-
-function draw() {
-  background(0);
-  let c = color(231, 235, 224);
-  fill(c);
-  push();
-  noStroke();
-  translate(width * 0.5, height * 0.5);
-  rotate(frameCount / 50.0);
-  polygon(0, 0, 100, 100);
-  pop();
- 
-  // rep. line for acceleration
-  push();
-  strokeWeight(5);
-  stroke(125, 180, 108);
-  translate(width * 0.5, height * 0.5);
-  rotate(frameCount / 50.0);
-  polygon(0, 0, 100, 2);
-  pop();
-  
-  push();
-  strokeWeight(0);
-  translate(width * 0.5, height * 0.5);
-  polygon(0, 0, 50, 100);
-  pop(); 
-  }
-
-function polygon(x, y, radius, npoints) {
-  let angle = TWO_PI / npoints;
-  beginShape();
-  for (let a = 0; a < TWO_PI; a += angle) {
-    let sx = x + cos(a) * radius;
-    let sy = y + sin(a) * radius;
-    vertex(sx, sy);
-  }
-  
-  endShape(CLOSE);
-}
-
---------------------------------------------------
-#Draft 2 Manipulating the DOM
-var velocity;
-var submit;
-var slider;
+let velocity;
+let submit;
+let slider;
+let state = "not moving"
+let position = 0
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  
+  // angleMode(DEGREES)
+  // angleMode(RADIANS)
   
   velocity = createInput("Input Velocity");
   velocity.position(10,10);
@@ -57,34 +17,46 @@ function setup() {
   slider.position(10,40);
   
   submit = createButton("Submit");
-  submit.mousePressed();
+  submit.mousePressed(go);
   submit.position(200,10);
 }
 
 function draw() {
-  background(80, 200,);
-  let c = color(231, 235, 224);
-  fill(c);
+  background(80, 200);
+  
   push();
-  noStroke();
-  translate(width * 0.5, height * 0.5);
-  rotate(frameCount / 0);
-  ellipse(0, 0, slider.value(), slider.value());
-  pop();
-
-  // rep. line for acceleration
-  push();
-  strokeWeight(8);
+  strokeWeight(2);
   stroke(125, 180, 108);
   translate(width * 0.5, height * 0.5);
-  rotate(frameCount / 0);
   ellipse(0, 0, slider.value(), slider.value());
   pop();
+  // print(frameCount)
+  
+  // line(0,0,1,1)
+  if(state == "not moving"){
+    push();
+    translate(width/2,height/2)
+    rotate(0)
+    ellipse(slider.value()/2,0,10,10)
+    pop()
+  }else{
+    position = position + int(velocity.value())
+    push();
+    translate(width/2,height/2)
+    rotate(position)
+    ellipse(slider.value()/2,0,10,10)
+    line(slider.value()/2,0,slider.value()/2 - 50, 0)
+    pop()
+    
+  }
 
-  push();
-  strokeWeight(0);
-  translate(width * 0.5, height * 0.5);
-  ellipse(0, 0, slider.value(), slider.value());
-  pop();
+}
+
+function go(){
+  if(state == "not moving"){
+    state = "moving"
+  } else if(state == "moving"){
+    state = "not moving"
+  }
 }
 
