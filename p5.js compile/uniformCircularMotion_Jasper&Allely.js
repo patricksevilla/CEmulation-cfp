@@ -78,13 +78,13 @@ function draw() {
   stroke(125, 180, 108);
   translate(width * 0.5, height * 0.5);
   rotate(frameCount / 0);
-  ellipse(0, 0, 250, 2);
+  ellipse(0, 0, slider.value(), slider.value());
   pop();
 
   push();
   strokeWeight(0);
   translate(width * 0.5, height * 0.5);
-  polygon(0, 0, 100, 200);
+  ellipse(0, 0, slider.value(), slider.value());
   pop();
 }
 
