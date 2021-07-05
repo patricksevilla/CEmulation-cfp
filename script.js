@@ -1,25 +1,37 @@
 const startButton = document.getElementById('start-btn')
 const nextButton = document.getElementById('next-btn')
+const resetButton = document.getElementById('rst-btn')
+const backButton = document.getElementById('bck-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 
-let shuffledQuestions, currentQuestionIndex
+let shuffledQuestions, currentQuestionIndex, Questioncount
 let countRightAnswers = 0
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
+  Questioncount = Questioncount + 1
+  document.getElementById('itemno').innerHTML = Questioncount;
+})
+resetButton.addEventListener('click', () =>{
+    location.reload();
+    })
+backButton.addEventListener('click', () => {
+    location.assign('https://www.google.com/')//pakipalitan na lang ito ng url or link nung intro page na aking pinapagawa
 })
 
 function startGame() {
   startButton.classList.add('hide')
+  resetButton.classList.add('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
   countRightAnswers = 0
+  Questioncount = 1
 }
 
 function setNextQuestion() {
@@ -41,6 +53,7 @@ function showQuestion(question) {
     answerButtonsElement.appendChild(button)
   })
   questions.forEach(q => q.answers.sort(() => Math.random() - .5));
+
 }
 
 function resetState() {
@@ -61,8 +74,7 @@ function selectAnswer(e) {
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
-    startButton.innerText = 'Restart'
-    startButton.classList.remove('hide')
+    resetButton.classList.remove('hide')
   }
   if (selectedButton.dataset = correct) {
     countRightAnswers ++; +1
@@ -86,33 +98,6 @@ function clearStatusClass(element) {
 }
 
 const questions = const_questions = [
-   {
-    question: 'If magnitude of average speed and average velocity over a time interval are same, then',
-    answers: [
-      { text: 'The particle must move zero acceleration', correct: false },
-      { text: 'The particle must move in a straight line without turning back', correct: true },
-      { text: 'The particle must move with non-zero acceleration;', correct: false },
-      { text: 'The particle must be at rest', correct: false }
-    ]
-   },
-   {
-    question: 'A car moving on a crowded road with a number of traffic red signals is in non-uniform motion',
-    answers: [
-      { text: 'False', correct: false },
-      { text: 'True', correct: true },
-      { text: 'Partly True', correct: false },
-      { text: 'Partly False', correct: false }
-    ]
-   },
-   {
-    question: 'A ship sails North in still water at 25 m/s directly across the sea that runs East at 11 m/s. What is the velocity of the ship relative to Earth?',
-    answers: [
-      { text: '36 m/s', correct: false },
-      { text: '27.31 m/s', correct: true },
-      { text: '14 m/s', correct: false },
-      { text: '-36 m/s', correct: false }
-    ]
-   },
    {
     question: 'A laser beam is aimed 15.95 degrees above the horizontal at a mirror 11,648 m away. It glances off the mirror and continues for an additional 8570. m at 11.44 degrees above the horizon until it hits its target. What is the resultant displacement of the beam to the target?',
     answers: [
@@ -150,7 +135,7 @@ const questions = const_questions = [
     ]
    },
    {
-    question: 'On a certain day, Paul started driving towards Steve’s place at a speed of 45 mph. After moving for 2 hours, he realized that he needed to reach Steve’s place in another 2 hours only. Therefore, he increased his speed to 65 mph and reached Steve’s place exactly on time. What is the average speed of his journey?',
+    question: "On a certain day, Paul started driving towards the house of Steve at a speed of 45 mph. After moving for 2 hours, he realized that he needed to reach the house in another 2 hours only. Therefore, he increased his speed to 65 mph and reached his destination exactly on time. What is the average speed of his journey?",
     answers: [
       {text: '50.0 mph', correct: false},
       {text: '52.5 mph', correct: false},
@@ -402,7 +387,7 @@ const questions = const_questions = [
     ]
    },
    {
-    question: 'A small ant is sleeping on a turntable just as the turntable starts to spin from rest, with an angular acceleration ?=1rad/s2?=1rad/s2 that is small enough so that, initially, the ant remains on the turntable. The ant is a distance R=0.1mR=0.1m from the center of the turntable, as shown in Figure 6.4.16.4.1 and the coefficient of static friction between the ant’s “feet” and the turntable is ?s=0.5?s=0.5. After how much time will the ant slide off from the turntable?',
+    question: 'A small ant is sleeping on a turntable just as the turntable starts to spin from rest, with an angular acceleration ?=1rad/s2?=1rad/s2 that is small enough so that, initially, the ant remains on the turntable. The ant is a distance R=0.1mR=0.1m from the center of the turntable, as shown in Figure 6.4.16.4.1 and the coefficient of static friction between the feet of the ant and the turntable is ?s=0.5?s=0.5. After how much time will the ant slide off from the turntable?',
     answers: [
       {text: '2s', correct: false},
       {text: '4.5s', correct: false},
@@ -474,7 +459,7 @@ const questions = const_questions = [
     ]
    },
    {
-    question: 'You drive north on a straight two-lane road at a constant 88 km/h. A truck in the other lane approaches you at a constant 104 km/h. Find the truck’s velocity relative to you.',
+    question: 'You drive north on a straight two-lane road at a constant 88 km/h. A truck in the other lane approaches you at a constant 104 km/h. Find the velocity of the truck relative to you.',
     answers: [
       {text: '192 km/h', correct: false},
       {text: '-192 km/h', correct: true},
@@ -483,7 +468,7 @@ const questions = const_questions = [
     ]
    },
    {
-    question: 'A plane’s compass indicates that it is headed due north, and its airspeed indicator shows that it is moving through the air at 240 km/h. If there is a 100- km/h wind from west to east, what is the velocity of the plane relative to the earth?',
+    question: 'The compass of a plane indicates that it is headed due north, and its airspeed indicator shows that it is moving through the air at 240 km/h. If there is a 100- km/h wind from west to east, what is the velocity of the plane relative to the earth?',
     answers: [
       {text: '260 km/h', correct: true},
       {text: '340 km/h', correct: false},
@@ -517,5 +502,5 @@ const questions = const_questions = [
       {text: '7 m/s', correct: false},
       {text: '5 m/s', correct: true}
     ]
-   }
+    }
 ]
