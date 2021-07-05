@@ -1,14 +1,14 @@
 *, *::before, *::after {
     box-sizing: border-box;
-    font-family: Gotham Rounded;
+    font-family: Calibri;
   }
-  
+
   :root {
     --hue-neutral: 200;
     --hue-wrong: 0;
     --hue-correct: 145;
   }
-  
+
   body {
     --hue: var(--hue-neutral);
     padding: 0;
@@ -18,33 +18,41 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: hsl(var(--hue), 100%, 20%);
   }
-  
+
   body.correct {
     --hue: var(--hue-correct);
   }
-  
+
   body.wrong {
     --hue: var(--hue-wrong);
   }
-  
-  .container {
+
+  .container1 {
     width: 800px;
     max-width: 80%;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
+    z-index: 1;
   }
-  
+
+  #toTop {
+    position:   absolute;
+    top:        5px;
+    left:       5px;
+    text-align: left;
+}
+
+
   .btn-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin: 20px 0;
   }
-  
+
   .btn {
     --hue: var(--hue-neutral);
     border: 1px solid hsl(var(--hue), 100%, 30%);
@@ -54,32 +62,80 @@
     color: white;
     outline: none;
   }
-  
+
   .btn:hover {
     border-color: black;
   }
-  
+
   .btn.correct {
     --hue: var(--hue-correct);
     color: black;
   }
-  
+
   .btn.wrong {
     --hue: var(--hue-wrong);
   }
-  
-  .start-btn, .next-btn {
+
+  .start-btn, .next-btn, .rst-btn {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
   }
-  
+
   .controls {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   .hide {
     display: none;
+  }
+
+  .center {
+      font-size: 1em;
+      text-align: center;
+  }
+
+  .header {
+    padding: 20px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px
+  }
+
+  .bold{
+    font-weight:bold;
+    }
+
+  .video-container {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   }
+
+  .video-container > video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: lightyellow;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.3;
+   }
+
+  .bck-btn{
+    font-size: 1.5rem;
+    font-weight: bold;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index: 1;
   }
