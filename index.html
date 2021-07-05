@@ -6,15 +6,26 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="styles.css" rel="stylesheet">
   <script defer src="script.js"></script>
-  <title>Quiz App</title>
+  <title>Quiz Game</title>
 </head>
 <body>
-  <div class="container">
-    <div class="modal-text">
-      <span id="all-questions" class="count">Score: </span>
-      <span id="right-answers" class="count"> 0 </span> </div>
+  <button id="bck-btn" class="bck-btn btn"><-BACK</button>
+  <div class="container1">
+    <div class = "header">
+    <h7>QUIZ(KINEMATICS)</h7>
+    </div>
+    <div class="center">
+      <span>Score: </span>
+      <span id="right-answers" class="count"> 0 </span>
+      <span>/</span>
+      <span id="Questions" class="count">45</span>
+    </div>
+    <div>
+      <span>Question No. </span>
+      <span id="itemno" class="count">1</span>
+    </div>
     <div id="question-container" class="hide">
-      <div id="question">Question</div>
+      <div id="question" class="bold">Question</div>
       <div id="answer-buttons" class="btn-grid">
         <button class="btn">Answer 1</button>
         <button class="btn">Answer 2</button>
@@ -25,7 +36,14 @@
     <div class="controls">
       <button id="start-btn" class="start-btn btn">Start</button>
       <button id="next-btn" class="next-btn btn hide">Next</button>
+      <button id="rst-btn" class="rst-btn btn hide">Play Again?</button>
     </div>
+  </div>
+  <div class="video-container">
+    <div class="color-overlay"></div>
+    <video autoplay loop muted>
+      <source src="3D Designer Website Template.mp4" type="video/mp4">
+    </video>
   </div>
 </body>
 </html>
