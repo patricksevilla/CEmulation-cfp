@@ -217,14 +217,13 @@ function draw()
   fill(220);
   textFont('Comic Sans MS');
   textSize(15);
-  text(showVelocity, width*0.158+3, height*0.4925);
   if(vidRatio > (width/height))
    {
     text(showVelocity, width*0.158+3, height*0.4925);
    }
   else
   {
-     newVelocity.position (showVelocity, width*0.158+3 + vidx, height*0.4925);
+     text(showVelocity, width*0.158+3 + vidx, height*0.4925);
    }
   
   if (mouseX >= (width*0.80 - 3) && mouseX <= (width*0.80 + 3) && mouseY <= 500 && mouseY >= a)
