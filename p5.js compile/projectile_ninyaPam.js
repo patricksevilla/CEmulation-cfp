@@ -8,10 +8,11 @@ let acceleration = 9.81 / 30;
 let pathx = [];
 let pathy = [];
 let state = "not moving";
+let angle
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  
+  angleMode(DEGREES)
   
   img1 = loadImage('bbg.jpg')
   img2 = loadImage('CANNONBALL.png')
@@ -25,11 +26,11 @@ function setup() {
   submit.mousePressed(go)
   
   input2 = createInput()
-  
+
 }
 
 function draw() {
-  frameRate(5);
+  // frameRate(5);
   background(220);
   image(img1, 0, 0, windowWidth, windowHeight);
   
@@ -40,9 +41,12 @@ function draw() {
     xloc = 80
     yloc = height * 0.72121212 - slider.value() - 52
     
-  }else if(state == "moving"){
-    xspeed = parseInt(input1.value())
-    yspeed = parseInt(input2.value()) * -1
+  }
+  
+  if(yloc > 400){
+    state = "not moving"
+    
+    
   }
   
 
@@ -77,6 +81,7 @@ function displayProjectile() {
 }
 
 function moveProjectile() {
+  yspeed += acceleration
   xloc = xloc + xspeed;
   yloc = yloc + yspeed;
 }
@@ -85,6 +90,9 @@ function go(){
   if(state == "not moving"){
     state = "moving"
     submit.html("reset")
+    xspeed = parseInt(input1.value())
+    yspeed = parseInt(input2.value()) * -1
+    
   }else if(state == "moving"){
     state = "not moving"
     submit.html("submit")
