@@ -94,7 +94,6 @@ function lining()
   else
     {
       line (width*0.56, 500, width*0.56, a);
-      line (width*0.56 - 20, a, width*0.56 + 20, a);
       maxH = 'Maximum Height: ' + round(((500-a)/30),2) + ' m';
       textSize(15);
       text(maxH, width * 0.56 +10, a+15);
