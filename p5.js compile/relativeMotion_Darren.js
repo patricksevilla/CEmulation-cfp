@@ -1,11 +1,15 @@
-let carA_x = 273;
+
 let carA_y = 440;
 let carA_yvelo = 0;
-let carB_x = 489;
 let carB_y = 40;
 let carB_yvelo = 0;
 let rectpos = 0;
 let angle = 180;
+let angleB = 180
+
+
+let carA_x;
+let carB_x;
 
 function preload() {
   bg = loadImage("bg1.png");
@@ -25,6 +29,10 @@ function setup() {
   relativemotion = createButton("Push to see Relative Motion");
   relativemotion.position(0, 460);
   relativemotion.mousePressed(showrelativemotion);
+  
+  
+  carA_x = width * 0.365;
+  carB_x = width * 0.645;
 }
 
 function draw() {
@@ -35,14 +43,18 @@ function draw() {
   }
   if (carB_y >= windowHeight || carB_y <= 0) {
     carB_yvelo = carB_yvelo * -1;
+    angleB = angleB + 180
   }
+  
+  
+  
   carB_y = carB_y + carB_yvelo;
   carA_y = carA_y + carA_yvelo;
   textSize(20);
   fill(0, 0, 0);
   text("VELOCITY OF A: " + str(-carA_yvelo * 40), 24, 13, 130);
-  text("VELOCITY", 600, 470);
-  text(" OF B: " + str(-carB_yvelo * 40), 600, 490);
+  text("VELOCITY", width - 120, height - 40);
+  text(" OF B: " + str(-carB_yvelo * 40), width - 120, height - 20);
   push();
   translate(carA_x, carA_y);
   rotate(angle + 180);
@@ -50,7 +62,7 @@ function draw() {
   pop();
   push();
   translate(carB_x, carB_y);
-  rotate(angle);
+  rotate(angleB);
   image(carB, 0, 0, 32, 52);
   pop();
 }
