@@ -3,6 +3,10 @@ function preload() {
   tabFont = loadFont('FormulaCondensed-Bold.otf');
 }
 
+let subjectList = ["Vectors", "Average Speed, Velocity & Acceleratio", "Instantaneous Velocity", "Acceleration", "Motion in 1 Dimension (Horizontal)", "Free Fall", "Projectile Motion", "Uniform Circular Motion", "Non-Uniform Circular Motion", "Relative Motion"]
+let subjectState = "not go"
+let p = []
+
 let concept = "home"
 let cchome = (255)
 let ccsubject =  (48, 40, 38)
@@ -19,6 +23,7 @@ let logoSide;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER, CENTER); 
+  rectMode(CENTER)
   //determines the properties of the videos
   if(vidRatio > (width/height)){
     vidx = 0
@@ -72,6 +77,7 @@ function draw() {
   
   if(mouseX < 2*width/5 && mouseX > width/5 && mouseY > 0 && mouseY < 50){
     ccsubject = 240
+    subjectState = "go"
   } else {
     ccsubject = (48, 40, 38)
   } 
@@ -93,6 +99,23 @@ function draw() {
   } else {
     ccabout = (48, 40, 38)
   }
+  
+  if(mouseX < 2*width/5 && mouseX > width/5){
+    if(subjectState == "go"){
+      textSize(25)
+      translate(width/5 + width/10, 75)
+      for(let i = 0; i < subjectList.length; i++){
+        fill(255)
+        rect(0, i * 30, width/5 + 180, 30)
+        fill(0)
+        p[i] = text(subjectList[i], 0, i * 30)
+      }
+      
+    }
+  }else{
+    subjectState = "not go"
+  }
+  
 }
 
 function mousePressed(){
@@ -116,5 +139,3 @@ function mousePressed(){
     // window.open("https://www.w3schools.com")
   }
 }
-
-// https://editor.p5js.org/drewraemonn/sketches/45IwFq8eK
