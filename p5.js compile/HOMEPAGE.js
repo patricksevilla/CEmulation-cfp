@@ -3,7 +3,7 @@ function preload() {
   tabFont = loadFont('FormulaCondensed-Bold.otf');
 }
 
-let subjectList = ["Vectors", "Average Speed, Velocity & Acceleratio", "Instantaneous Velocity", "Acceleration", "Motion in 1 Dimension (Horizontal)", "Free Fall", "Projectile Motion", "Uniform Circular Motion", "Non-Uniform Circular Motion", "Relative Motion"]
+let subjectList = ["Vectors", "Average Speed, Velocity & Acceleration", "Instantaneous Velocity", "Acceleration", "Motion in 1 Dimension (Horizontal)", "Free Fall", "Projectile Motion", "Uniform Circular Motion", "Non-Uniform Circular Motion", "Relative Motion"]
 let subjectState = "not go"
 let p = []
 
@@ -100,15 +100,30 @@ function draw() {
     ccabout = (48, 40, 38)
   }
   
-  if(mouseX < 2*width/5 && mouseX > width/5){
+  let textS = 25
+  let textColor = 0
+  if(mouseX < 2*width/5 + 100 && mouseX > width/5 - 100){
     if(subjectState == "go"){
-      textSize(25)
-      translate(width/5 + width/10, 75)
+      translate(width/5 + width/10, 100)
       for(let i = 0; i < subjectList.length; i++){
-        fill(255)
-        rect(0, i * 30, width/5 + 180, 30)
-        fill(0)
+        
+        if(mouseY > 100 + (i * 30) - (15) && mouseY < 100 + (i * 30) - (15) + 30){
+          textS = 30
+          textColor  = 255
+        }
+        
+        
+        fill(207,238,250, 50)
+        textSize(textS)
+        rect(0, i * 30, width/5 + 200, 30, 5)
+        fill(textColor)
         p[i] = text(subjectList[i], 0, i * 30)
+        
+        textColor = 0
+        textS = 25
+
+        
+        
       }
       
     }
