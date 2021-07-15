@@ -6,8 +6,6 @@ function preload() {
 let subjectList = [
   "Vectors",
   "Average Speed, Velocity & Acceleration",
-  "Instantaneous Velocity",
-  "Acceleration",
   "Motion in 1 Dimension (Horizontal)",
   "Free Fall",
   "Projectile Motion",
