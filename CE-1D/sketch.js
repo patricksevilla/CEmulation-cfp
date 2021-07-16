@@ -1,6 +1,7 @@
 let tabFont;
 function preload() {
   tabFont = loadFont("FormulaCondensed-Bold.otf");
+  bgmusic = loadSound("HOME.mp3")
 }
 
 let subjectList = [
@@ -41,6 +42,7 @@ let vidx, vidy, vidWidth, vidHeight;
 let logoSide;
 
 function setup() {
+  bgmusic.loop()
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
