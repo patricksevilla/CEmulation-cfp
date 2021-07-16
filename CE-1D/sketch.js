@@ -11,6 +11,7 @@ let subjectList = [
   "Projectile Motion",
   "Uniform Circular Motion",
   "Relative Motion",
+  "Bonus Game",
 ];
 
 let subjectLink = [
@@ -20,6 +21,7 @@ let subjectLink = [
   "https://patricksevilla.github.io/CEmulation/subject/freefall_Meneses",
   "https://patricksevilla.github.io/CEmulation/subject/projectile_pamNina/",
   "https://patricksevilla.github.io/CEmulation/subject/ucm/",
+  "https://patricksevilla.github.io/CEmulation/subject/game/",
   
 ]
 let subjectState = "not go";
