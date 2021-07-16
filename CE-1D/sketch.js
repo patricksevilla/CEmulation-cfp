@@ -182,7 +182,7 @@ function mousePressed() {
     mouseY < 50
   ) {
     print("quiz ere");
-    // window.open("")
+    window.open("https://patricksevilla.github.io/CEmulation/")
   }
 
   if (
@@ -192,7 +192,7 @@ function mousePressed() {
     mouseY < 50
   ) {
     print("lot plan ere");
-    // window.open("https://www.w3schools.com")
+    window.open("https://patricksevilla.github.io/CEmulation/subject/lotplan_agultoCarpio/")
   }
 
   if (
