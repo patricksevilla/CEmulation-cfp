@@ -97,19 +97,19 @@ class Snake {
 
     if(keyCode == DOWN_ARROW){
       this.head[0].y+= 20
-      this.label.html("You will see your Score at the End")
+      this.label.html("You will see score when your life is 0")
     }
     if(keyCode == UP_ARROW){
       this.head[0].y-= 20
-      this.label.html("You will see your Score at the End")
+      this.label.html("You will see score when your life is 0")
     }
     if(keyCode == LEFT_ARROW){
       this.head[0].x-= 20
-      this.label.html("You will see your Score at the End")
+      this.label.html("You will see score when your life is 0")
     }
     if(keyCode == RIGHT_ARROW){
       this.head[0].x+= 20
-      this.label.html("You will see your Score at the End")
+      this.label.html("You will see score when your life is 0")
     }
   }
 
