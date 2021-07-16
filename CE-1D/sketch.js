@@ -15,7 +15,7 @@ let subjectList = [
 ];
 
 let subjectLink = [
-  
+  "https://patricksevilla.github.io/CEmulation/subject/projectile_pamNina/",
   "https://patricksevilla.github.io/CEmulation/subject/ucm/",
   
 ]
