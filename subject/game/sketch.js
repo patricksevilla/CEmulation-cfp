@@ -68,7 +68,7 @@ class Snake {
     this.bump = 0
 
 
-    this.scoreP = createSpan("0")
+    this.scoreP = createSpan("1")
     this.scoreP.position(0,0)
     this.scoreP.style('padding: 2px 18px;');
     this.scoreP.style('background: #68b723');
@@ -136,7 +136,7 @@ this.toxicCount = this.score + (this.bump)
     for(let i = 0; i < this.toxicCount; i++){
       if(this.head[0].x == this.toxic[i].x && this.head[0].y == this.toxic[i].y){
         this.score = this.score - 1
-        this.scoreP.html(this.score)
+        this.scoreP.html(this.score + 1)
         
         this.scoreP.style('background: #fc0303');
         
@@ -169,7 +169,7 @@ this.toxicCount = this.score + (this.bump)
       song.play()
       this.food.x = floor(random(0,width/scl))*scl
       this.food.y = floor(random(0,width/scl))*scl
-      this.scoreP.html(this.score)
+      this.scoreP.html(this.score + 1)
       this.scoreP.style('background: #68b723');
 
 
