@@ -10,13 +10,14 @@ let subjectList = [
   "Free Fall",
   "Projectile Motion",
   "Uniform Circular Motion",
-  "Non-Uniform Circular Motion",
   "Relative Motion",
 ];
 
 let subjectLink = [
   "https://patricksevilla.github.io/CEmulation/subject/vector",
+  "https://patricksevilla.github.io/CEmulation/subject/avespeedacce_mendoza",
   "https://patricksevilla.github.io/CEmulation/subject/1dmotion_Marcelo/",
+  "https://patricksevilla.github.io/CEmulation/subject/freefall_Meneses",
   "https://patricksevilla.github.io/CEmulation/subject/projectile_pamNina/",
   "https://patricksevilla.github.io/CEmulation/subject/ucm/",
   
