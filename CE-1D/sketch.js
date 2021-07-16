@@ -173,7 +173,7 @@ function mousePressed() {
     mouseY < 50
   ) {
     print("subject ere");
-    window.open("https://google.com", "_self");
+   
   }
 
   if (
@@ -183,7 +183,7 @@ function mousePressed() {
     mouseY < 50
   ) {
     print("quiz ere");
-    window.open("https://patricksevilla.github.io/CEmulation/")
+    window.open("https://patricksevilla.github.io/CEmulation/","_self")
   }
 
   if (
@@ -193,7 +193,7 @@ function mousePressed() {
     mouseY < 50
   ) {
     print("lot plan ere");
-    window.open("https://patricksevilla.github.io/CEmulation/subject/lotplan_agultoCarpio/")
+    window.open("https://patricksevilla.github.io/CEmulation/subject/lotplan_agultoCarpio/","_self")
   }
 
   if (
@@ -203,13 +203,13 @@ function mousePressed() {
     mouseY < 50
   ) {
     print("about us ere");
-    // window.open("https://www.w3schools.com")
+    // window.open("https://www.w3schools.com","_self")
   }
 
   if (subjectState == "go") {
     for (let i = 0; i < subjectLink.length; i++) {
       if (mouseY > 100 + i * 30 - 15 && mouseY < 100 + i * 30 - 15 + 30) {
-        window.open(subjectLink[i])
+        window.open(subjectLink[i],"_self")
       }
     }
   }
