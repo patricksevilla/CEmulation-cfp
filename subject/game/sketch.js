@@ -205,7 +205,7 @@ this.toxicCount = this.score + (this.bump)
       this.finalScore.style('background: #68b723');
       this.finalScore.style('font-family: courier;');
       this.finalScore.style('font-size', 50 + 'px');
-      this.finalScore.position(150,150)
+      this.finalScore.position(width/2 - 50.5,height/2 - 20)
       
       this.finalScore.mousePressed(fun)
       
