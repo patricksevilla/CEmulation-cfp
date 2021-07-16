@@ -37,7 +37,7 @@ function go(){
 
 function draw() {
   image(img1, 0, 0, windowWidth, windowHeight)
-  image(img2, x, 320, 150, 100);
+  image(img2, x, height*0.7, 150, 100);
 
   fill(0, 0, 0);
   text("Input Speed:", 20, 35);
