@@ -205,7 +205,7 @@ function mousePressed() {
     mouseY < 50
   ) {
     print("about us ere");
-    // window.open("https://www.w3schools.com","_self")
+    window.open("https://patricksevilla.github.io/CEmulation/aboutus/","_self")
   }
 
   if (subjectState == "go") {
