@@ -20,7 +20,7 @@ resetButton.addEventListener('click', () =>{
     location.reload();
     })
 backButton.addEventListener('click', () => {
-    location.assign('https://patricksevilla.github.io/CEmulation/CE1D/')//pakipalitan na lang ito ng url or link nung intro page na aking pinapagawa
+    location.assign('https://patricksevilla.github.io/CEmulation/1D/')//pakipalitan na lang ito ng url or link nung intro page na aking pinapagawa
 })
 
 function startGame() {
