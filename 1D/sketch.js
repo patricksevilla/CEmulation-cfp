@@ -22,6 +22,7 @@ let subjectLink = [
   "https://patricksevilla.github.io/CEmulation/subject/freefall_Meneses",
   "https://patricksevilla.github.io/CEmulation/subject/projectile_pamNina/",
   "https://patricksevilla.github.io/CEmulation/subject/ucm/",
+  "https://patricksevilla.github.io/CEmulation/subject/relativeMot_Galvez",
   "https://patricksevilla.github.io/CEmulation/subject/game/",
   
 ]
